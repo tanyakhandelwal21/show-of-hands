@@ -1,6 +1,6 @@
 import React from 'react'
 import './Form.css'
-import bootstrapLogoImg from './images/bootstrap-solid.svg'
+//import bootstrapLogoImg from './images/bootstrap-solid.svg'
 import firebase from 'firebase/app';
 
 
@@ -11,7 +11,8 @@ class Form extends React.Component {
   }
 
 
-  googleSignIn = () => {
+  googleSignIn = (e) => {
+    e.preventDefault();
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -42,7 +43,7 @@ class Form extends React.Component {
 
 
 
-
+       {/*}
         <img className="mb-4" src={bootstrapLogoImg} alt="" width="72" height="72" />
         <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label htmlFor="inputEmail" className="sr-only">Email address</label>
@@ -55,7 +56,7 @@ class Form extends React.Component {
           </label>
         </div>
         <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        
+        */}
 
         <div className="loginContainer"> 
         { user ?
