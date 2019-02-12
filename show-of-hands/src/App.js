@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Form from './Form'
+import LoginForm from './LoginForm'
 
 
 // This import loads the firebase namespace.
 import firebase from 'firebase/app';
- 
+
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
 // import 'firebase/database';
@@ -45,7 +45,7 @@ class App extends Component {
   	const { user } = this.state;
     return (
       <div className="App">
-        <Form user={user} />
+        <LoginForm user={user} />
       </div>
     );
   }
