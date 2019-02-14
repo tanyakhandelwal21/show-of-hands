@@ -4,7 +4,7 @@ import './LoginForm.css';
 import firebase from 'firebase/app';
 
 
-class Form extends React.Component {
+class LoginForm extends React.Component {
 
   signOut = () => {
     firebase.auth().signOut();
@@ -77,4 +77,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default LoginForm;
