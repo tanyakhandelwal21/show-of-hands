@@ -12,7 +12,7 @@ import 'firebase/auth';
 
 firebase.initializeApp({
 	apiKey: "AIzaSyBusHXXdt9QtbtFfSE9zlSV5Hjwrx6rPRo",
-    authDomain: "bolt-33b49.firebaseapp.com",
+    authDomain: "Show of Hands!",
     databaseURL: "https://bolt-33b49.firebaseio.com",
     projectId: "bolt-33b49",
     storageBucket: "bolt-33b49.appspot.com",
