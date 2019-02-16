@@ -33,10 +33,10 @@ class App extends Component {
 			this.setState({user})
 		  if (user) {
 		    // User is signed in.
-		    console.log("USER:", user)
+		    console.log("Current User:", user)
 		  } else {
 		    // No user is signed in.
-		    console.log('User is NOT signed in.')
+		    console.log('User is not signed in.')
 		  }
 		});
 	}
