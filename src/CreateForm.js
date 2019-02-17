@@ -15,7 +15,7 @@ class Form extends React.Component {
         super(props);
         this.state = {
             choiceText: '',
-            choices: ['Choice1, 'Choice2']
+            choices: ['Choice1', 'Choice2']
         };
         // this.handleClick = this.handleClick.bind(this);
     }
