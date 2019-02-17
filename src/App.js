@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import LoginForm from './LoginForm'
+import LoginForm from './LoginForm';
+import CreateForm from './CreateForm';
 
 
 // This import loads the firebase namespace.
