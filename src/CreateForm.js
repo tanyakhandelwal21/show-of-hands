@@ -91,10 +91,10 @@ class CreateForm extends React.Component {
 
                 {/* TODO: implement category select box */
                 <select id="select-category">
-                <option> Trendin</option>
-                <option> Pop culture</option>
-                <option> Movies </option>
-                <option> Big decisions </option>
+                <option value='trending'> Trendin</option>
+                <option value='trending'> Pop culture</option>
+                <option value='trending'> Movies </option>
+                <option value='trending'> Big decisions </option>
                 </select>
                 
                 }
