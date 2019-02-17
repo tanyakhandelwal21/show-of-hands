@@ -89,7 +89,15 @@ class CreateForm extends React.Component {
                 <input type="button" onClick={(e) => this.handleNewChoiceClick(e)} value="+"></input>
                 <br/>
 
-                {/* TODO: implement category select box */}
+                {/* TODO: implement category select box */
+                <select id="select-category">
+                <option> Trending </option>
+                <option> Pop culture</option>
+                <option> Movies </option>
+                <option> Big decisions </option>
+                </select>
+                
+                }
 
                 {/* Lifespan input */}
                 <label>This poll will end on:</label>
