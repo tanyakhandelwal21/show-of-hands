@@ -1,54 +1,42 @@
-import React, { Component } from 'react';
-import './App.css';
-import LoginForm from './LoginForm'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import AppRouter, { history } from './routers/AppRouter';
+import configureStore from './store/configureStore';
+import { login, logout } from './actions/auth';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
+import 'react-dates/lib/css/_datepicker.css';
+import { firebase } from './firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 
 
-// This import loads the firebase namespace.
-import firebase from 'firebase/app';
-
-// These imports load individual services into the firebase namespace.
-import 'firebase/auth';
-// import 'firebase/database';
-
-firebase.initializeApp({
-	apiKey: "AIzaSyBusHXXdt9QtbtFfSE9zlSV5Hjwrx6rPRo",
-    authDomain: "bolt-33b49.firebaseapp.com",
-    databaseURL: "https://bolt-33b49.firebaseio.com",
-    projectId: "bolt-33b49",
-    storageBucket: "bolt-33b49.appspot.com",
-    messagingSenderId: "578966418932"
-})
-
-
-
-
-class App extends Component {
-
-	state = {
-		user: null
-	}
-
-	componentDidMount(){
-		firebase.auth().onAuthStateChanged((user) => {
-			this.setState({user})
-		  if (user) {
-		    // User is signed in.
-		    console.log("USER:", user)
-		  } else {
-		    // No user is signed in.
-		    console.log('User is NOT signed in.')
-		  }
-		});
-	}
-
-  render() {
-  	const { user } = this.state;
-    return (
-      <div className="App">
-        <LoginForm user={user} />
-      </div>
-    );
+const store = configureStore();
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
   }
-}
+};
 
-export default App;
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch(login(user.uid));
+    renderApp();
+    if (history.location.pathname === '/') {
+      history.push('/dashboard');
+    }
+  } else {
+    store.dispatch(logout());
+    renderApp();
+    history.push('/');
+  }
+});
