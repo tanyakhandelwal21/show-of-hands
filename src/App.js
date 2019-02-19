@@ -15,35 +15,6 @@ import CreateForm from './CreateForm';
 // import firebase from 'firebase/app';
 import 'firebase/auth';
 
-
-
-class App extends Component {
-
-	state = {
-		user: null
-	}
-
-	componentDidMount(){
-		firebase.auth().onAuthStateChanged((user) => {
-			this.setState({user})
-		  if (user) {
-		    // User is signed in.
-		    console.log("Current User:", user)
-		  } else {
-		    // No user is signed in.
-		    console.log('User is not signed in.')
-		  }
-		});
-	}
-
-  render() {
-  	const { user } = this.state;
-    return (
-      <div className="App">
-        <LoginForm user={user} />
-      </div>
-    );
-
 const store = configureStore();
 const jsx = (
   <Provider store={store}>
@@ -55,7 +26,6 @@ const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'));
     hasRendered = true;
-
   }
 };
 
