@@ -11,7 +11,6 @@ import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 import './App.css';
 import LoginForm from './LoginForm';
-import CreateForm from './CreateForm';
 // import firebase from 'firebase/app';
 import 'firebase/auth';
 
