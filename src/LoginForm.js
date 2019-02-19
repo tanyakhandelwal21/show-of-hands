@@ -6,12 +6,12 @@ import firebase from 'firebase/app';
 
 class LoginForm extends React.Component {
 
-  signOut = () => {
+  signOut() {
     firebase.auth().signOut();
   }
 
 
-  googleSignIn = (e) => {
+  googleSignIn(e) {
     e.preventDefault();
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function(result) {

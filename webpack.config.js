@@ -21,10 +21,13 @@ module.exports = (env) => {
       filename: 'bundle.js'
     },
     module: {
-      rules: [{
+      loaders: [{
         loader: 'babel-loader',
-        test: /\.js$/,
-        exclude: /node_modules/
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        options: {
+          presets: ['react']
+        }
       }, {
         test: /\.s?css$/,
         use: CSSExtract.extract({
