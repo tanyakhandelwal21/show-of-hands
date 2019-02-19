@@ -1,26 +1,42 @@
 import React from 'react';
-import './CreateForm.css';
+// import './CreateForm.css';
 
 function Choice(props) {
     return (
         <div>
             <span className="choice-number">{props.num}</span>
-            <span className="choice-title">{props.title}</span>
+            <input
+                type="text"
+                className="choice-title"
+                value={props.text}
+                onChange={(e) => props.onChange(e, props.num-1)}/>
         </div>
     );
 }
 
-class Form extends React.Component {
+class CreateForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            choiceText: '',
-            choices: ['Choice1', 'Choice2']
+            newChoiceText: '',
+            choices: ['Choice1', 'Choice2'],
+            date: this.getDate(0)
         };
-        // this.handleClick = this.handleClick.bind(this);
+        this.updateChoiceText = this.updateChoiceText.bind(this);
     }
-    updateChoiceText(e) {
-        this.setState({ choiceText: e.target.value });
+    updateNewChoiceText(e) {
+        this.setState({ newChoiceText: e.target.value });
+    }
+
+    updateChoiceText(e, index) {
+        // console.log(e.target.value);
+        let c = this.state.choices;
+        c[index] = e.target.value;
+        // console.log(c)
+        this.setState({ choices: c });
+    }
+    updateDate(e) {
+        this.setState({ date: e.target.value });
     }
 
     // Get current date in YYYY-MM-DD format with an offset of months
@@ -29,55 +45,73 @@ class Form extends React.Component {
         date.setMonth(date.getMonth() + offset);
         return date.toISOString().substring(0,10);
     }
-    handleClick(e) {
+    handleNewChoiceClick(e) {
         this.setState({
-            choices: choices.concat([this.state.choiceText]);
+            choices: this.state.choices.concat([this.state.newChoiceText]),
+            newChoiceText: ''
         })
     }
+
     handleSubmit() {
         // TODO
     }
     render() {
-        int i = 1;
+        let i = 1;
         const choicesList = this.state.choices.map((choice) =>
-            <li><Choice num={i++} title={choice} /></li>
+            <li><Choice num={i++} text={choice} onChange={this.updateChoiceText}/></li>
         );
         return (
             <form onSubmit={this.handleSubmit}>
 
-                // Title input
+                {/* Title input */}
                 <label>Poll Title</label>
                 <input required maxlength="40" type="text" id="title-input"
                 placeholder="Enter a title..."/>
+                <br/>
 
-                // Description input
+                {/* Description input */}
                 <label>Poll Description</label>
                 <textarea required maxlength="250"
                 rows="4" id="description-input"
                 placeholder="Enter a short description..."></textarea>
+                <br/>
 
-                // Choice input
+                {/* Choice input */}
+                <label>Response Choices</label>
                 <ul>{choicesList}</ul>
                 <br/>
-                <label>Response Choices</label>
                 <input
                     type="text"
                     id="choice-input"
-                    value={this.state.choiceText}
-                    onChange={e => this.updateChoiceText(e)}
+                    value={this.state.newChoiceText}
+                    onChange={e => this.updateNewChoiceText(e)}
                     placeholder="Add a new choice..."/>
-                <button onClick={(e) => this.handleClick(e) value="+" }></button>
+                <input type="button" onClick={(e) => this.handleNewChoiceClick(e)} value="+"></input>
                 <br/>
 
+                {/* TODO: implement category select box */
+                <select id="select-category">
+                <option value='trending'> Trendin</option>
+                <option value='trending'> Pop culture</option>
+                <option value='trending'> Movies </option>
+                <option value='trending'> Big decisions </option>
+                </select>
+                
+                }
 
-                // TODO: implement category select box
-
-                // Lifespan input
+                {/* Lifespan input */}
                 <label>This poll will end on:</label>
-                <input type="date" value={this.getDate(0)} min={this.getDate(0)} max={this.getDate(1)}/>
+                <input
+                    type="date"
+                    value={this.state.date}
+                    min={this.getDate(0)}
+                    max={this.getDate(1)}
+                    onChange={e => this.updateDate(e)}/>
+                <br/>
 
-                // Public results input
+                {/* Public results input */}
                 <input type="checkbox" id="private-results"/><label>Make end results private</label>
+                <br/>
 
                 <input type="submit" value="Create"/>
             </form>

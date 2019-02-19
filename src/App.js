@@ -1,26 +1,21 @@
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import AppRouter, { history } from './routers/AppRouter';
+import configureStore from './store/configureStore';
+import { login, logout } from './actions/auth';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
+import 'react-dates/lib/css/_datepicker.css';
+//import { firebase } from './firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 import React, { Component } from 'react';
 import './App.css';
-import LoginForm from './LoginForm'
-
-
-// This import loads the firebase namespace.
+import LoginForm from './LoginForm';
+import CreateForm from './CreateForm';
 import firebase from 'firebase/app';
-
-// These imports load individual services into the firebase namespace.
 import 'firebase/auth';
-// import 'firebase/database';
 
-firebase.initializeApp({
-	apiKey: "AIzaSyBusHXXdt9QtbtFfSE9zlSV5Hjwrx6rPRo",
-    authDomain: "bolt-33b49.firebaseapp.com",
-    databaseURL: "https://bolt-33b49.firebaseio.com",
-    projectId: "bolt-33b49",
-    storageBucket: "bolt-33b49.appspot.com",
-    messagingSenderId: "578966418932"
-})
-
-
-
+<<<<<<< HEAD
 
 class App extends Component {
 
@@ -48,7 +43,34 @@ class App extends Component {
         <LoginForm user={user} />
       </div>
     );
+=======
+const store = configureStore();
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
+>>>>>>> dev
   }
-}
+};
 
-export default App;
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch(login(user.uid));
+    renderApp();
+    if (history.location.pathname === '/') {
+      history.push('/dashboard');
+    }
+  } else {
+    store.dispatch(logout());
+    renderApp();
+    history.push('/');
+  }
+});
