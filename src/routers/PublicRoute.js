@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 export const PublicRoute = ({
   isAuthenticated,
   component: Component,
-  ...rest
+  rest
 }) => (
     <Route {...rest} component={(props) => (
       isAuthenticated ? (
