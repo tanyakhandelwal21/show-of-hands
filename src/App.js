@@ -7,7 +7,7 @@ import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import { firebase } from './firebase/firebase';
+//import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 import './App.css';
 import LoginForm from './LoginForm';
@@ -26,7 +26,6 @@ const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'));
     hasRendered = true;
-
   }
 };
 

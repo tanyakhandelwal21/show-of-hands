@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'test') {
 module.exports = (env) => {
   const isProduction = env === 'production';
   const CSSExtract = new ExtractTextPlugin('styles.css');
-
+// i guess here in webpack config we need to define the react rules
   return {
     entry: ['babel-polyfill', './src/app.js'],
     output: {
