@@ -15,7 +15,7 @@ import CreateForm from './CreateForm';
 // import firebase from 'firebase/app';
 import 'firebase/auth';
 
-<<<<<<< HEAD
+
 
 class App extends Component {
 
@@ -43,7 +43,7 @@ class App extends Component {
         <LoginForm user={user} />
       </div>
     );
-=======
+
 const store = configureStore();
 const jsx = (
   <Provider store={store}>
@@ -55,7 +55,7 @@ const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'));
     hasRendered = true;
->>>>>>> dev
+
   }
 };
 
