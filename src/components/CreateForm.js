@@ -1,6 +1,7 @@
 import React from 'react';
 // import './CreateForm.css';
 
+// Component for one choice in the poll
 function Choice(props) {
     return (
         <div>
@@ -24,10 +25,11 @@ class CreateForm extends React.Component {
         };
         this.updateChoiceText = this.updateChoiceText.bind(this);
     }
+
+    // Methods to update variables when the form is changed by user
     updateNewChoiceText(e) {
         this.setState({ newChoiceText: e.target.value });
     }
-
     updateChoiceText(e, index) {
         // console.log(e.target.value);
         let c = this.state.choices;
@@ -38,13 +40,6 @@ class CreateForm extends React.Component {
     updateDate(e) {
         this.setState({ date: e.target.value });
     }
-
-    // Get current date in YYYY-MM-DD format with an offset of months
-    getDate(offset) {
-        let date = new Date();
-        date.setMonth(date.getMonth() + offset);
-        return date.toISOString().substring(0,10);
-    }
     handleNewChoiceClick(e) {
         this.setState({
             choices: this.state.choices.concat([this.state.newChoiceText]),
@@ -52,6 +47,14 @@ class CreateForm extends React.Component {
         })
     }
 
+    // Get current date in YYYY-MM-DD format with an offset of months
+    getDate(offset) {
+        let date = new Date();
+        date.setMonth(date.getMonth() + offset);
+        return date.toISOString().substring(0,10);
+    }
+
+    // Send form data to backend API
     handleSubmit() {
         // TODO
     }
@@ -89,15 +92,13 @@ class CreateForm extends React.Component {
                 <input type="button" onClick={(e) => this.handleNewChoiceClick(e)} value="+"></input>
                 <br/>
 
-                {/* TODO: implement category select box */
+                {/* TODO: implement category select box */}
                 <select id="select-category">
-                <option value='trending'> Trendin</option>
-                <option value='trending'> Pop culture</option>
-                <option value='trending'> Movies </option>
-                <option value='trending'> Big decisions </option>
+                    <option value='trending'> Trendin</option>
+                    <option value='trending'> Pop culture</option>
+                    <option value='trending'> Movies </option>
+                    <option value='trending'> Big decisions </option>
                 </select>
-                
-                }
 
                 {/* Lifespan input */}
                 <label>This poll will end on:</label>
