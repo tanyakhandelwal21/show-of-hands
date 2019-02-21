@@ -13,6 +13,8 @@ import './App.css';
 import LoginForm from './LoginForm';
 // import firebase from 'firebase/app';
 import 'firebase/auth';
+import './firebase/firebase';
+
 
 const store = configureStore();
 const jsx = (
