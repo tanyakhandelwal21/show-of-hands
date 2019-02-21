@@ -42,13 +42,13 @@ export { firebase, googleAuthProvider, database as default };
 
 // console.log('I made a request to change the data.');
 
-database.ref('isCSMAJOR')
-	.remove()
-	.then(() => {
-		console.log('Data was removed');
-	}).catch((e) => {
-		console.log('Did not remove data', e);
-	});
+// database.ref('isCSMAJOR')
+// 	.remove()
+// 	.then(() => {
+// 		console.log('Data was removed');
+// 	}).catch((e) => {
+// 		console.log('Did not remove data', e);
+// 	});
 
 
 
