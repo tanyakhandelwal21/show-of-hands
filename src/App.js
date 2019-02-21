@@ -14,6 +14,8 @@ import LoginForm from './LoginForm';
 import CreateForm from './CreateForm';
 // import firebase from 'firebase/app';
 import 'firebase/auth';
+import './firebase/firebase';
+
 
 const store = configureStore();
 const jsx = (
