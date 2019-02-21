@@ -9,6 +9,10 @@ export class PollListFilters extends React.Component {
         this.state = {
             calendarFocused: null
         };
+        this.onDatesChange = this.onDatesChange.bind(this);
+        this.onFocusChange = this.onFocusChange.bind(this);
+        this.onTextChange = this.onTextChange.bind(this);
+        this.onSortChange = this.onSortChange.bind(this);
     }
   onDatesChange(startDate, endDate) {
     this.props.setStartDate(startDate);

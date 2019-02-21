@@ -7,9 +7,33 @@ export const addPoll = (poll) => ({
   poll
 });
 
+
+
+export const listPolls = (polls) => ({
+  type: 'LIST_POLLS',
+  polls
+});
+
+
+
+export const listAllPolls = (pollData = {}) => {
+  return (dispatch) => {
+
+    database.ref('polls').once("value").then((polls) => {
+
+      polls = polls.val()
+      const pollsArray = Object.keys(polls).map(id => {
+        polls[id].id = id
+        return polls[id]
+      })
+      
+      dispatch(listPolls(pollsArray))
+    });
+  };
+};
+
 export const startAddPoll = (pollData = {}) => {
   return (dispatch) => {
-    debugger
     const {
       description = '',
       note = '',

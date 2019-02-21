@@ -106,10 +106,10 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
         ...state,
         text: action.text
       };
-    case 'SORT_BY_AMOUNT':
+    case 'SORT_NUMBEROFOPTIONS':
       return {
         ...state,
-        sortBy: 'amount'
+        sortBy: 'numberOfOptions'
       };
     case 'SORT_BY_DATE':
       return {
