@@ -6,7 +6,7 @@ import selectPolls from '../selectors/polls';
 export const PollList = (props) => (
   <div>
     {
-      props.polls.length === 0 ? (
+      (!props.polls || props.polls.length === 0) ? (
         <p>No polls</p>
       ) : (
           props.polls.map((poll) => {

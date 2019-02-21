@@ -14,9 +14,9 @@ import LoginForm from './LoginForm';
 // import firebase from 'firebase/app';
 import 'firebase/auth';
 import './firebase/firebase';
-import { addPoll } from './actions/polls';
-import { setTextFilter } from './actions/filters';
-import getVisiblePolls from './selectors/polls';
+// import { addPoll } from './actions/polls';
+// import { setTextFilter } from './actions/filters';
+// import getVisiblePolls from './selectors/polls';
 
 
 const store = configureStore();

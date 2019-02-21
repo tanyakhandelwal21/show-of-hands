@@ -10,7 +10,7 @@ const addExpense = (
     createdAt = 0
   } = {}
 ) => ({
-  type: 'ADD_EXPENSE',
+  type: 'ADD_POLL',
   expense: {
     id: uuid(),
     description,
@@ -22,13 +22,13 @@ const addExpense = (
 
 // REMOVE_EXPENSE
 const removeExpense = ({ id } = {}) => ({
-  type: 'REMOVE_EXPENSE',
+  type: 'REMOVE_POLL',
   id
 });
 
 // EDIT_EXPENSE
 const editExpense = (id, updates) => ({
-  type: 'EDIT_EXPENSE',
+  type: 'EDIT_POLL',
   id,
   updates
 });
@@ -46,7 +46,7 @@ const sortByDate = () => ({
 
 // SORT_BY_AMOUNT
 const sortByAmount = () => ({
-  type: 'SORT_BY_AMOUNT'
+  type: 'SORT_BY_NUMBEROFOPTIONS'
 });
 
 // SET_START_DATE
@@ -61,28 +61,28 @@ const setEndDate = (endDate) => ({
   endDate
 });
 
-// Expenses Reducer
+// Polls Reducer
 
-const expensesReducerDefaultState = [];
+const pollsReducerDefaultState = [];
 
-const expensesReducer = (state = expensesReducerDefaultState, action) => {
+const pollsReducer = (state = pollsReducerDefaultState, action) => {
   switch (action.type) {
-    case 'ADD_EXPENSE':
+    case 'ADD_POLL':
       return [
         ...state,
-        action.expense
+        action.poll
       ];
-    case 'REMOVE_EXPENSE':
+    case 'REMOVE_POLL':
       return state.filter(({ id }) => id !== action.id);
-    case 'EDIT_EXPENSE':
-      return state.map((expense) => {
-        if (expense.id === action.id) {
+    case 'EDIT_POLL':
+      return state.map((poll) => {
+        if (poll.id === action.id) {
           return {
-            ...expense,
+            ...poll,
             ...action.updates
           };
         } else {
-          return expense;
+          return poll;
         };
       });
     default:
@@ -132,18 +132,20 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
 };
 
 // Get visible expenses
-const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
-  return expenses.filter((expense) => {
+const getVisiblePolls = (polls, o) => {
+  if(!o) { return polls; }
+  const { text, sortBy, startDate, endDate } = o;
+  return polls.filter((poll) => {
     const startDateMatch = typeof startDate !== 'number' || expense.createdAt >= startDate;
-    const endDateMatch = typeof endDate !== 'number' || expense.createdAt <= endDate;
-    const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
+    const endDateMatch = typeof endDate !== 'number' || poll.createdAt <= endDate;
+    const textMatch = poll.description.toLowerCase().includes(text.toLowerCase());
 
     return startDateMatch && endDateMatch && textMatch;
   }).sort((a, b) => {
     if (sortBy === 'date') {
       return a.createdAt < b.createdAt ? 1 : -1;
-    } else if (sortBy === 'amount') {
-      return a.amount < b.amount ? 1 : -1;
+    } else if (sortBy === 'numberOfOptions') {
+      return a.numberOfOptions < b.numberOfOptions ? 1 : -1;
     }
   });
 };
@@ -152,19 +154,19 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
 
 const store = createStore(
   combineReducers({
-    expenses: expensesReducer,
+    polls: pollsReducer,
     filters: filtersReducer
   })
 );
 
 store.subscribe(() => {
   const state = store.getState();
-  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-  console.log(visibleExpenses);
+  const visiblePolls = getVisiblePolls(state.polls, state.filters);
+  console.log(visiblePolls);
 });
 
-const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100, createdAt: -21000 }));
-const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300, createdAt: -1000 }));
+const pollOne = store.dispatch(addPoll({ description: 'Rent', amount: 100, createdAt: -21000 }));
+const pollTwo = store.dispatch(addPoll({ description: 'Coffee', amount: 300, createdAt: -1000 }));
 
 // store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 // store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
@@ -180,7 +182,7 @@ store.dispatch(sortByAmount());
 // store.dispatch(setEndDate(999)); // endDate 1250
 
 const demoState = {
-  expenses: [{
+  polls: [{
     id: 'poijasdfhwer',
     description: 'January Rent',
     note: 'This was the final payment for that address',

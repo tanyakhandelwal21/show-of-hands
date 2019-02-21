@@ -28,23 +28,24 @@ export class PollListFilters extends React.Component {
     }
   };
   render() {
+    const { filters } = this.props;
     return (
       <div>
         <input
           type="text"
-          value={this.props.filters.text}
+          value={filters ? filters.text : ''}
           onChange={this.onTextChange}
         />
         <select
-          value={this.props.filters.sortBy}
+          value={filters ? filters.sortBy : ''}
           onChange={this.onSortChange}
         >
           <option value="date">Date</option>
           <option value="numberOfOptions">Number of Options</option>
         </select>
         <DateRangePicker
-          startDate={this.props.filters.startDate}
-          endDate={this.props.filters.endDate}
+          startDate={filters ? filters.startDate : null}
+          endDate={filters ? filters.endDate : null}
           onDatesChange={this.onDatesChange}
           focusedInput={this.state.calendarFocused}
           onFocusChange={this.onFocusChange}
