@@ -1,5 +1,7 @@
 import * as firebase from 'firebase';
 import config from './firebase.config.js';
+// import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 console.log(config);
 firebase.initializeApp(config);

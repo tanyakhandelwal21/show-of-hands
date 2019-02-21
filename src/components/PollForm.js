@@ -6,6 +6,14 @@ export default class PollForm extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onDescriptionChange = this.onDescriptionChange.bind(this)
+    this.onNoteChange = this.onNoteChange.bind(this)
+    this.onNumberOfOptionsChange = this.onNumberOfOptionsChange.bind(this)
+    this.onDateChange = this.onDateChange.bind(this)
+    this.onFocusChange = this.onFocusChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+
+
     this.state = {
       description: props.poll ? props.poll.description : '',
       note: props.poll ? props.poll.note : '',
@@ -15,30 +23,30 @@ export default class PollForm extends React.Component {
       error: ''
     };
   }
-  onDescriptionChange = (e) => {
+  onDescriptionChange(e) {
     const description = e.target.value;
     this.setState(() => ({ description }));
-  };
-  onNoteChange = (e) => {
+  }
+  onNoteChange(e) {
     const note = e.target.value;
     this.setState(() => ({ note }));
-  };
-  onNumberOfOptionsChange = (e) => {
+  }
+  onNumberOfOptionsChange(e) {
     const numberOfOptions = e.target.value;
 
     if (!numberOfOptions || numberOfOptions.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ numberOfOptions }));
     }
-  };
-  onDateChange = (createdAt) => {
+  }
+  onDateChange(createdAt) {
     if (createdAt) {
       this.setState(() => ({ createdAt }));
     }
-  };
-  onFocusChange = ({ focused }) => {
+  }
+  onFocusChange({ focused }) {
     this.setState(() => ({ calendarFocused: focused }));
-  };
-  onSubmit = (e) => {
+  }
+  onSubmit(e) {
     e.preventDefault();
 
     if (!this.state.description || !this.state.numberOfOptions) {
@@ -52,7 +60,7 @@ export default class PollForm extends React.Component {
         note: this.state.note
       });
     }
-  };
+  }
   render() {
     return (
       <div>

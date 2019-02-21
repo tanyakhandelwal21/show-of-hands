@@ -4,17 +4,21 @@ import PollForm from './PollForm';
 import { startAddPoll } from '../actions/polls';
 
 export class AddPollPage extends React.Component {
-  onSubmit = (poll) => {
+  constructor (props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  onSubmit (poll) {
     this.props.startAddPoll(poll);
     this.props.history.push('/');
-  };
+  }
   render() {
     return (
       <div>
         <h1>Add Poll</h1>
-        <ExpenseForm
-          onSubmit={this.onSubmit}
-        />
+         <PollForm
+            onSubmit={this.onSubmit}
+          />
       </div>
     );
   }

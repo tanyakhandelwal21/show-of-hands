@@ -4,14 +4,18 @@ import PollForm from './PollForm';
 import { startEditPoll, startRemovePoll } from '../actions/polls';
 
 export class EditPollPage extends React.Component {
-  onSubmit = (poll) => {
+  constructor (props) {
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+  }
+  onSubmit (poll) {
     this.props.startEditPoll(this.props.poll.id, poll);
     this.props.history.push('/');
-  };
-  onRemove = () => {
+  }
+  onRemove () {
     this.props.startRemovePoll({ id: this.props.poll.id });
     this.props.history.push('/');
-  };
+  }
   render() {
     return (
       <div>

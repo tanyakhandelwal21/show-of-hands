@@ -9,6 +9,7 @@ export const addPoll = (poll) => ({
 
 export const startAddPoll = (pollData = {}) => {
   return (dispatch) => {
+    debugger
     const {
       description = '',
       note = '',
@@ -25,6 +26,44 @@ export const startAddPoll = (pollData = {}) => {
   };
 };
 
+export const startEditPoll = (pollData = {}) => {
+  debugger
+  return (dispatch) => {
+    const {
+      description = '',
+      note = '',
+      numberOfOptions = 0,
+      createdAt = 0
+    } = pollData;
+    const poll = { description, note, numberOfOptions, createdAt };
+
+    database.ref('polls').push(poll).then((ref) => {
+      dispatch(addPoll({
+        id: ref.key,poll
+      }));
+    });
+  };
+};
+
+
+export const startRemovePoll = (pollData = {}) => {
+  debugger
+  return (dispatch) => {
+    const {
+      description = '',
+      note = '',
+      numberOfOptions = 0,
+      createdAt = 0
+    } = pollData;
+    const poll = { description, note, numberOfOptions, createdAt };
+
+    database.ref('polls').push(poll).then((ref) => {
+      dispatch(addPoll({
+        id: ref.key,poll
+      }));
+    });
+  };
+};
 // REMOVE_EXPENSE
 export const removePoll = ({ id } = {}) => ({
   type: 'REMOVE_POLL',
