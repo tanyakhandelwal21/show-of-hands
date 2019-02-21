@@ -4,20 +4,23 @@ import { DateRangePicker } from 'react-dates';
 import { setTextFilter, sortByDate, sortByNumberOfOptions, setStartDate, setEndDate } from '../actions/filters';
 
 export class PollListFilters extends React.Component {
-  state = {
-    calendarFocused: null
-  };
-  onDatesChange = ({ startDate, endDate }) => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            calendarFocused: null
+        };
+    }
+  onDatesChange(startDate, endDate) {
     this.props.setStartDate(startDate);
     this.props.setEndDate(endDate);
   };
-  onFocusChange = (calendarFocused) => {
-    this.setState(() => ({ calendarFocused }));
+  onFocusChange(calendarFocused) {
+    this.setState({ calendarFocused });
   }
-  onTextChange = (e) => {
+  onTextChange(e) {
     this.props.setTextFilter(e.target.value);
   };
-  onSortChange = (e) => {
+  onSortChange(e) {
     if (e.target.value === 'date') {
       this.props.sortByDate();
     } else if (e.target.value === 'numberOfOptions') {
