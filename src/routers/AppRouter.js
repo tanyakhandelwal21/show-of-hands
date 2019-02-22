@@ -6,6 +6,8 @@ import AddPollPage from '../components/AddPollPage';
 import EditPollPage from '../components/EditPollPage';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
+import ViewPollPage from '../components/ViewPollPage';
+
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -17,8 +19,9 @@ const AppRouter = () => (
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
         <PrivateRoute path="/dashboard" component={DashboardPage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/add" component={AddPollPage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/edit" component={EditPollPage} exact={true} />
+        <PrivateRoute path="/dashboard/add-poll" component={AddPollPage} exact={true} />
+        <PrivateRoute path="/dashboard/polls/:id" component={ViewPollPage} exact={true} />
+        <PrivateRoute path="/dashboard/polls/:id/edit" component={EditPollPage} exact={true} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

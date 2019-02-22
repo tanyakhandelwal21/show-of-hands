@@ -5,7 +5,7 @@ import numeral from 'numeral';
 
 const PollListItem = ({ id, description, numberOfOptions, createdAt }) => (
   <div>
-    <Link to={`/edit/${id}`}>
+    <Link to={`/dashboard/polls/${id}`}>
       <h3>{description}</h3>
     </Link>
     <p>

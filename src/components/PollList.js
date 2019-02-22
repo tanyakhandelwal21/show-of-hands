@@ -38,7 +38,6 @@ export const PollList = (props) => (
 
 const mapStateToProps = (state) => {
   const polls = selectPolls(state.polls, state.filters)
-
   return {
     polls
   };

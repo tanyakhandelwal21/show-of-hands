@@ -7,26 +7,24 @@ export const addPoll = (poll) => ({
   poll
 });
 
-
-
 export const listPolls = (polls) => ({
   type: 'LIST_POLLS',
   polls
 });
 
-
+export const getPoll = (polls) => ({
+  type: 'GET_POLL',
+  polls
+});
 
 export const listAllPolls = (pollData = {}) => {
   return (dispatch) => {
-
     database.ref('polls').once("value").then((polls) => {
-
       polls = polls.val()
       const pollsArray = Object.keys(polls).map(id => {
         polls[id].id = id
         return polls[id]
       })
-      
       dispatch(listPolls(pollsArray))
     });
   };
@@ -50,8 +48,22 @@ export const startAddPoll = (pollData = {}) => {
   };
 };
 
+export const startGetPoll = (pollData = {}) => {
+  return (dispatch) => {
+    debugger
+    pollData;
+    database.ref('polls').child(pollData.id).once("value").then((poll) => {
+      poll = poll.val()
+      poll.id = poll.key
+      dispatch(getPoll({
+        id: poll.id,
+        poll
+      }));
+    });
+  };
+};
+
 export const startEditPoll = (pollData = {}) => {
-  debugger
   return (dispatch) => {
     const {
       description = '',
@@ -60,7 +72,6 @@ export const startEditPoll = (pollData = {}) => {
       createdAt = 0
     } = pollData;
     const poll = { description, note, numberOfOptions, createdAt };
-
     database.ref('polls').push(poll).then((ref) => {
       dispatch(addPoll({
         id: ref.key,poll
