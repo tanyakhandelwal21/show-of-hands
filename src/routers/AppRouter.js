@@ -3,6 +3,7 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
 import AddPollPage from '../components/AddPollPage';
+import CreatePage from '../components/CreatePage';
 import EditPollPage from '../components/EditPollPage';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
@@ -22,6 +23,8 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard/add-poll" component={AddPollPage} exact={true} />
         <PrivateRoute path="/dashboard/polls/:id" component={ViewPollPage} exact={true} />
         <PrivateRoute path="/dashboard/polls/:id/edit" component={EditPollPage} exact={true} />
+        <PrivateRoute path="/dashboard/polls/add" component={CreatePage} exact={true} />
+        <PrivateRoute path="/dashboard/polls/edit" component={EditPollPage} exact={true} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

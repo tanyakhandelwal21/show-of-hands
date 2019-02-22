@@ -33,12 +33,15 @@ export const listAllPolls = (pollData = {}) => {
 export const startAddPoll = (pollData = {}) => {
   return (dispatch) => {
     const {
-      description = '',
-      note = '',
-      numberOfOptions = 0,
-      createdAt = 0
+        title = '',
+        description = '',
+        category = 0,
+        choices = [],
+        start_date = new Date(),
+        end_date = new Date(),
+        public_results = false
     } = pollData;
-    const poll = { description, note, numberOfOptions, createdAt };
+    const poll = { title, description, category, choices, start_date, end_date, public_results };
 
     database.ref('polls').push(poll).then((ref) => {
       dispatch(getPoll({
@@ -78,6 +81,7 @@ export const startRemovePoll = (id) => {
     });
   };
 };
+
 // REMOVE_EXPENSE
 export const removePoll = ({ id } = {}) => ({
   type: 'REMOVE_POLL',
