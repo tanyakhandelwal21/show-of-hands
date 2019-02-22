@@ -14,15 +14,7 @@ export const ViewPollItem = ({ poll }) => {
 
   return (
     <div>
-      <Link to={`/dashboard/polls/${id}`}>
-        <h2>{description}</h2>
-      </Link>
-      <p>
-        {numeral(numberOfOptions / 100).format('$0,0.00')}
-        -
-        {moment(createdAt).format('MMMM Do, YYYY')}
-      </p>
-      <hr />
+      <PollListItem data={poll} />;
       <Link to={`/dashboard/polls/${id}/edit`}>
         <button>
           Edit
