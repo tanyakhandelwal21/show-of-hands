@@ -172,9 +172,9 @@ class CreateForm extends React.Component {
                 }
             </li>
         );
-
-        const categories = this.categories.map((category, i) =>
-            <option key={i} value={i+1}>{category}</option>
+        i = 0;
+        const categories = this.categories.map((category) =>
+            <option key={i} value={i++}>{category}</option>
         );
         return (
             <form onSubmit={this.handleSubmit} >
