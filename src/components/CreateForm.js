@@ -4,15 +4,12 @@ import React from 'react';
 // Component for one choice in the poll
 function Choice(props) {
     return (
-        <div>
-            <span className="choice-number">{props.num}</span>
-            <input
-                type="text"
-                className="choice-title"
-                placeholder={"Choice "+props.num}
-                value={props.text}
-                onChange={(e) => props.onChange(e, props.num-1)}/>
-        </div>
+        <input
+            type="text"
+            className="choice-title"
+            placeholder={"Choice "+props.num}
+            value={props.text}
+            onChange={(e) => props.onChange(e, props.num-1)}/>
     );
 }
 
@@ -115,6 +112,26 @@ class CreateForm extends React.Component {
             newChoiceText: ''
         })
     }
+    removeChoice(text) {
+        let index = 2;
+        let tc = this.state.textChoices.slice();
+        for (let i = 2; i < tc.length; i++) {
+            if (tc[i] === text) {
+                index = i;
+                break;
+            }
+        }
+        console.log("Remove " + text + ": index " + index);
+        console.log(tc);
+        tc.splice(index, 1);
+        console.log(tc);
+        let c = this.state.choices.slice();
+        c.splice(index, 1);
+        this.setState({
+            textChoices: tc,
+            choices: c
+        });
+    }
     updatePublicResults(e) {
         this.setState({
             public_results: !e.target.checked
@@ -145,9 +162,15 @@ class CreateForm extends React.Component {
         });
     }
     render() {
-
-        const textChoicesList = this.state.textChoices.map((choice, i) =>
-            <li key={i}><Choice num={i+1} text={choice} onChange={this.updateChoiceValue}/></li>
+        let i = 1;
+        const textChoicesList = this.state.textChoices.map((choice) =>
+            <li>
+                <Choice num={i++} text={choice} onChange={this.updateChoiceValue}/>
+                { i >= 4 ? (
+                    <input type="button" value="-" onClick={() => this.removeChoice(choice)}/>
+                ) : null
+                }
+            </li>
         );
 
         const categories = this.categories.map((category, i) =>
