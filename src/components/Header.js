@@ -11,7 +11,7 @@ export const Header = ({ startLogout, addPoll }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Show Of Hands</h1>
         </Link>
-        <NavLink to='dashboard/polls/add' className="is-active" exact={true}>Create Poll</NavLink>
+        <NavLink to='/dashboard/add-poll' className="is-active" exact={true}>Create Poll</NavLink>
         <button className="button button--link" onClick={startLogout}>Logout</button>
 
       </div>

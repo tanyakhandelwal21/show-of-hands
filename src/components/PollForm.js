@@ -22,7 +22,22 @@ export default class PollForm extends React.Component {
       calendarFocused: false,
       error: ''
     };
+
   }
+  
+  componentDidMount () {
+    const props = this.props;
+    if (props.poll && props.poll.id) {
+      this.setState({
+        description: props.poll ? props.poll.description : '',
+        note: props.poll ? props.poll.note : '',
+        numberOfOptions: props.poll ? (props.poll.numberOfOptions / 100).toString() : '',
+        createdAt: props.poll ? moment(props.poll.createdAt) : moment(),
+        calendarFocused: false,
+      })
+    }
+  }
+
   onDescriptionChange(e) {
     const description = e.target.value;
     this.setState(() => ({ description }));
@@ -93,7 +108,7 @@ export default class PollForm extends React.Component {
             onChange={this.onNoteChange}
           >
           </textarea>
-          <button>Add Poll</button>
+          <button>Save Poll</button>
         </form>
       </div>
     )

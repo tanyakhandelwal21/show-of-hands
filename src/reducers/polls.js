@@ -1,9 +1,7 @@
 // Expenses Reducer
 
 const pollsReducerDefaultState = [];
-
 export default (state = pollsReducerDefaultState, action) => {
-  
   switch (action.type) {
     case 'ADD_POLL':
       return [
@@ -25,8 +23,8 @@ export default (state = pollsReducerDefaultState, action) => {
       });
     case 'LIST_POLLS':
       return action.polls;
-    case 'SET_POLLS':
-      return action.polls;
+    case 'GET_POLL':
+      return action.poll;
     default:
       return state;
   }

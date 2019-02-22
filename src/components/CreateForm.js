@@ -48,6 +48,24 @@ class CreateForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
+  componentDidMount () {
+    const props = this.props;
+    if (props.poll && props.poll.id) {
+      this.setState({
+            title: props.poll.title,
+            description: props.poll.title,
+            textChoices: (props.poll.choices || []).map(c => c.text),
+            choices: props.poll.choices || [],
+            category: props.poll.category,
+            newChoiceText: '',
+            start_date: props.poll.start_date,
+            end_date: props.poll.end_date,
+            public_results: props.poll.public_results
+        })
+    }
+  }
+
     // Methods to update variables when the form is changed by user
     updateValue(e, attr) {
         if (attr === 'title') {
@@ -129,7 +147,8 @@ class CreateForm extends React.Component {
 
     // Send form data to backend API
     // TODO: Add user_id
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault()
         this.props.onSubmit({
             title: this.state.title,
             description: this.state.description,
@@ -153,9 +172,9 @@ class CreateForm extends React.Component {
                 }
             </li>
         );
-        i = 0;
-        const categories = this.categories.map((category) =>
-            <option value={i++}>{category}</option>
+
+        const categories = this.categories.map((category, i) =>
+            <option key={i} value={i+1}>{category}</option>
         );
         return (
             <form onSubmit={this.handleSubmit} >
@@ -217,7 +236,7 @@ class CreateForm extends React.Component {
                 <label>Make end results private</label>
                 <br/>
 
-                <input type="submit" value="Create"/>
+                <input type="submit" value="Save"/>
             </form>
         )
     }
