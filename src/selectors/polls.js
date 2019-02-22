@@ -8,15 +8,15 @@ export default (polls, o) => {
   }
   const { text, sortBy, startDate, endDate } = o;
   return polls.filter((poll) => {
-    const createdAtMoment = moment(poll.createdAt);
+    const createdAtMoment = moment(poll.start_date);
     const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true;
     const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
-    const textMatch = poll.description.toLowerCase().includes(text.toLowerCase());
+    const textMatch = poll.title.toLowerCase().includes(text.toLowerCase());
 
     return startDateMatch && endDateMatch && textMatch;
   }).sort((a, b) => {
     if (sortBy === 'date') {
-      return a.createdAt < b.createdAt ? 1 : -1;
+      return a.start_date < b.start_date ? 1 : -1;
     } else if (sortBy === 'numberOfOptions') {
       return a.amount < b.amount ? 1 : -1;
     }

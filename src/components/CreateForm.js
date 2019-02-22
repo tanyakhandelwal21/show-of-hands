@@ -9,6 +9,7 @@ function Choice(props) {
             <input
                 type="text"
                 className="choice-title"
+                placeholder={"Choice "+props.num}
                 value={props.text}
                 onChange={(e) => props.onChange(e, props.num-1)}/>
         </div>
@@ -18,32 +19,87 @@ function Choice(props) {
 class CreateForm extends React.Component {
     constructor(props) {
         super(props);
+
+        this.categories = [
+            'ENTERTAINMENT',
+            'FOOD',
+            'LIFESTYLE',
+            'MISCELLANEOUS',
+            'SURVEY',
+            'TECHNOLOGY'
+        ];
+
         this.state = {
+            title: '',
+            description: '',
+            textChoices: ['', ''],
+            choices: [{
+                text: '',
+                votes: 0
+            }, {
+                text: '',
+                votes: 0
+            }],
+            category: 0,
             newChoiceText: '',
-            choices: ['Choice1', 'Choice2'],
-            date: this.getDate(0)
+            start_date: new Date(),
+            end_date: this.getDate(0),
+            public_results: true
         };
-        this.updateChoiceText = this.updateChoiceText.bind(this);
+        this.updateChoiceValue = this.updateChoiceValue.bind(this);
+        this.updateValue = this.updateValue.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // Methods to update variables when the form is changed by user
-    updateNewChoiceText(e) {
-        this.setState({ newChoiceText: e.target.value });
+    updateValue(e, attr) {
+        if (attr === 'title') {
+            this.setState({
+                title: e.target.value
+            });
+        } else if (attr === 'description') {
+            this.setState({
+                description: e.target.value
+            });
+        } else if (attr === 'newChoiceText') {
+            this.setState({
+                newChoiceText: e.target.value
+            });
+        } else if (attr === 'category') {
+            this.setState({
+                category: e.target.value
+            });
+        } else if (attr === 'end_date') {
+            this.setState({
+                end_date: e.target.value
+            });
+        }
     }
-    updateChoiceText(e, index) {
+    updateChoiceValue(e, index) {
         // console.log(e.target.value);
+        let tc = this.state.textChoices;
+        tc[index] = e.target.value;
         let c = this.state.choices;
-        c[index] = e.target.value;
-        // console.log(c)
-        this.setState({ choices: c });
-    }
-    updateDate(e) {
-        this.setState({ date: e.target.value });
+        c[index].text = e.target.value;
+        // console.log(c);
+        this.setState({
+            textChoices: tc,
+            choices: c
+        });
     }
     handleNewChoiceClick(e) {
         this.setState({
-            choices: this.state.choices.concat([this.state.newChoiceText]),
+            textChoices: this.state.textChoices.concat([this.state.newChoiceText]),
+            choices: this.state.choices.concat([{
+                text: this.state.newChoiceText,
+                votes: 0
+            }]),
             newChoiceText: ''
+        })
+    }
+    updatePublicResults(e) {
+        this.setState({
+            public_results: !e.target.checked
         })
     }
 
@@ -55,63 +111,87 @@ class CreateForm extends React.Component {
     }
 
     // Send form data to backend API
+    // TODO: Add user_id
     handleSubmit() {
-        // TODO
+        this.props.onSubmit({
+            title: this.state.title,
+            description: this.state.description,
+            category: this.state.category,
+            choices: this.state.choices,
+            start_date: new Date(),
+            end_date: this.state.end_date,
+            public_results: this.state.public_results,
+            responders: [],
+            user_id: 0
+        });
     }
     render() {
         let i = 1;
-        const choicesList = this.state.choices.map((choice) =>
-            <li><Choice num={i++} text={choice} onChange={this.updateChoiceText}/></li>
+        const textChoicesList = this.state.textChoices.map((choice) =>
+            <li><Choice num={i++} text={choice} onChange={this.updateChoiceValue}/></li>
+        );
+        i = 0;
+        const categories = this.categories.map((category) =>
+            <option value={i++}>{category}</option>
         );
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} >
 
                 {/* Title input */}
                 <label>Poll Title</label>
-                <input required maxlength="40" type="text" id="title-input"
-                placeholder="Enter a title..."/>
+                <input required
+                maxLength="40" type="text"
+                id="title-input"
+                placeholder="Enter a title..."
+                value={this.state.title}
+                onChange={e => this.updateValue(e, 'title')}/>
                 <br/>
 
                 {/* Description input */}
                 <label>Poll Description</label>
-                <textarea required maxlength="250"
+                <textarea required maxLength="250"
                 rows="4" id="description-input"
-                placeholder="Enter a short description..."></textarea>
+                placeholder="Enter a short description..."
+                value={this.state.description}
+                onChange={e => this.updateValue(e, 'description')}></textarea>
                 <br/>
 
                 {/* Choice input */}
-                <label>Response Choices</label>
-                <ul>{choicesList}</ul>
+                <label>Response textChoices</label>
+                <ul>{textChoicesList}</ul>
                 <br/>
+
                 <input
                     type="text"
                     id="choice-input"
                     value={this.state.newChoiceText}
-                    onChange={e => this.updateNewChoiceText(e)}
+                    onChange={e => this.updateValue(e, 'newChoiceText')}
                     placeholder="Add a new choice..."/>
-                <input type="button" onClick={(e) => this.handleNewChoiceClick(e)} value="+"></input>
+                <input type="button" onClick={e => this.handleNewChoiceClick(e)} value="+"></input>
                 <br/>
 
-                {/* TODO: implement category select box */}
-                <select id="select-category">
-                    <option value='trending'> Trendin</option>
-                    <option value='trending'> Pop culture</option>
-                    <option value='trending'> Movies </option>
-                    <option value='trending'> Big decisions </option>
+                <label>Poll Category</label>
+                <select id="select-category" value={this.state.category}
+                onChange={e => this.updateValue(e, 'category')}>
+                    {categories}
                 </select>
+                <br/>
 
                 {/* Lifespan input */}
                 <label>This poll will end on:</label>
                 <input
                     type="date"
-                    value={this.state.date}
+                    value={this.state.end_date}
                     min={this.getDate(0)}
                     max={this.getDate(1)}
-                    onChange={e => this.updateDate(e)}/>
+                    onChange={e => this.updateValue(e, 'end_date')}/>
                 <br/>
 
                 {/* Public results input */}
-                <input type="checkbox" id="private-results"/><label>Make end results private</label>
+                <input type="checkbox"
+                id="private-results" checked={!this.state.public_results}
+                onChange={e => this.updatePublicResults(e)} />
+                <label>Make end results private</label>
                 <br/>
 
                 <input type="submit" value="Create"/>
