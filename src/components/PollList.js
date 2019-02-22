@@ -29,7 +29,7 @@ export const PollList = (props) => (
         <p>No polls</p>
       ) : (
           props.polls.map((poll) => {
-            return <PollListItem key={poll.id} {...poll} />;
+            return <PollListItem data={poll} />;
           })
         )
     }

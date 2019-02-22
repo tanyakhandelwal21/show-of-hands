@@ -11,9 +11,9 @@ export const Header = ({ startLogout, addPoll }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Show Of Hands</h1>
         </Link>
-        <NavLink to='dashboard/polls/add' activeclassName="is-active" exact={true}> Create my poll</NavLink>
+        <NavLink to='dashboard/polls/add' className="is-active" exact={true}>Create Poll</NavLink>
         <button className="button button--link" onClick={startLogout}>Logout</button>
-        
+
       </div>
     </div>
   </header>
@@ -21,9 +21,8 @@ export const Header = ({ startLogout, addPoll }) => (
 
 const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatch(startLogout())
-  
+
 });
 
 
 export default connect(undefined, mapDispatchToProps)(Header);
-

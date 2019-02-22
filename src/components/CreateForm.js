@@ -135,7 +135,7 @@ class CreateForm extends React.Component {
             <option value={i++}>{category}</option>
         );
         return (
-            <form >
+            <form onSubmit={this.handleSubmit} >
 
                 {/* Title input */}
                 <label>Poll Title</label>
@@ -194,7 +194,7 @@ class CreateForm extends React.Component {
                 <label>Make end results private</label>
                 <br/>
 
-                <input type="button" onClick={this.handleSubmit} value="Create"/>
+                <input type="submit" value="Create"/>
             </form>
         )
     }
