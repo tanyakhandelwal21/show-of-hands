@@ -12,9 +12,9 @@ export const listPolls = (polls) => ({
   polls
 });
 
-export const getPoll = (polls) => ({
+export const getPoll = (poll) => ({
   type: 'GET_POLL',
-  polls
+  poll
 });
 
 export const listAllPolls = (pollData = {}) => {
@@ -41,8 +41,8 @@ export const startAddPoll = (pollData = {}) => {
     const poll = { description, note, numberOfOptions, createdAt };
 
     database.ref('polls').push(poll).then((ref) => {
-      dispatch(addPoll({
-        id: ref.key,poll
+      dispatch(getPoll({
+        id: ref.key
       }));
     });
   };
@@ -50,51 +50,30 @@ export const startAddPoll = (pollData = {}) => {
 
 export const startGetPoll = (pollData = {}) => {
   return (dispatch) => {
-    debugger
-    pollData;
-    database.ref('polls').child(pollData.id).once("value").then((poll) => {
-      poll = poll.val()
-      poll.id = poll.key
-      dispatch(getPoll({
-        id: poll.id,
-        poll
-      }));
-    });
+    database.ref('polls').child(pollData.id).once("value").then((ref) => {
+      const poll = ref.val()
+      poll.id = ref.key
+      dispatch(getPoll(poll));
+    }).catch(e => console.error(e))
   };
 };
 
-export const startEditPoll = (pollData = {}) => {
+export const startEditPoll = (id, newData) => {
   return (dispatch) => {
-    const {
-      description = '',
-      note = '',
-      numberOfOptions = 0,
-      createdAt = 0
-    } = pollData;
-    const poll = { description, note, numberOfOptions, createdAt };
-    database.ref('polls').push(poll).then((ref) => {
-      dispatch(addPoll({
-        id: ref.key,poll
+    database.ref('polls').child(id).set(newData).then(() => {
+      dispatch(editPoll({
+        id
       }));
     });
   };
 };
 
 
-export const startRemovePoll = (pollData = {}) => {
-  debugger
+export const startRemovePoll = (id) => {
   return (dispatch) => {
-    const {
-      description = '',
-      note = '',
-      numberOfOptions = 0,
-      createdAt = 0
-    } = pollData;
-    const poll = { description, note, numberOfOptions, createdAt };
-
-    database.ref('polls').push(poll).then((ref) => {
+    database.ref('polls').child(id).remove().then(() => {
       dispatch(addPoll({
-        id: ref.key,poll
+        id
       }));
     });
   };
