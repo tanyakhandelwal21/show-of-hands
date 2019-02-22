@@ -25,7 +25,7 @@ export const listAllPolls = (pollData = {}) => {
         polls[id].id = id
         return polls[id]
       })
-      
+
       dispatch(listPolls(pollsArray))
     });
   };
@@ -34,12 +34,15 @@ export const listAllPolls = (pollData = {}) => {
 export const startAddPoll = (pollData = {}) => {
   return (dispatch) => {
     const {
-      description = '',
-      note = '',
-      numberOfOptions = 0,
-      createdAt = 0
+        title = '',
+        description = '',
+        category = 0,
+        choices = [],
+        start_date = new Date(),
+        end_date = new Date(),
+        public_results = false
     } = pollData;
-    const poll = { description, note, numberOfOptions, createdAt };
+    const poll = { title, description, category, choices, start_date, end_date, public_results };
 
     database.ref('polls').push(poll).then((ref) => {
       dispatch(addPoll({
@@ -53,12 +56,15 @@ export const startEditPoll = (pollData = {}) => {
   debugger
   return (dispatch) => {
     const {
-      description = '',
-      note = '',
-      numberOfOptions = 0,
-      createdAt = 0
+        title = '',
+        description = '',
+        category = 0,
+        choices = [],
+        start_date = new Date(),
+        end_date = new Date(),
+        public_results = false
     } = pollData;
-    const poll = { description, note, numberOfOptions, createdAt };
+    const poll = { title, description, category, choices, start_date, end_date, public_results };
 
     database.ref('polls').push(poll).then((ref) => {
       dispatch(addPoll({
@@ -73,12 +79,15 @@ export const startRemovePoll = (pollData = {}) => {
   debugger
   return (dispatch) => {
     const {
-      description = '',
-      note = '',
-      numberOfOptions = 0,
-      createdAt = 0
+        title = '',
+        description = '',
+        category = 0,
+        choices = [],
+        start_date = new Date(),
+        end_date = new Date(),
+        public_results = false
     } = pollData;
-    const poll = { description, note, numberOfOptions, createdAt };
+    const poll = { title, description, category, choices, start_date, end_date, public_results };
 
     database.ref('polls').push(poll).then((ref) => {
       dispatch(addPoll({
