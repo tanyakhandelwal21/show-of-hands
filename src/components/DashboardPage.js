@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import './DashboardPage.css';
 
 
@@ -37,3 +38,25 @@ render() {
 
 export default DashboardPage;
 
+=======
+import { connect } from 'react-redux';
+import PollList from './PollList';
+import PollListFilters from './PollListFilters';
+import PollsSummary from './PollsSummary';
+import { listAllPolls } from '../actions/polls';
+
+const DashboardPage = (props) => (
+	<div>
+		<PollsSummary />
+		<PollListFilters />
+		<PollList />
+	</div>
+)
+ 
+
+const mapDispatchToProps = (dispatch) => {
+	return dispatch(listAllPolls())
+};
+
+export default connect(undefined, mapDispatchToProps)(DashboardPage);
+>>>>>>> 49aac6f73a8cce1c6a9eb17a63fa906cc59991d8

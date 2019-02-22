@@ -7,13 +7,18 @@ import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import { firebase } from './firebase/firebase';
+// import { firebase } from './firebase/firebase';
+import firebase from 'firebase/app'
 import LoadingPage from './components/LoadingPage';
 import './App.css';
 import LoginForm from './LoginForm';
-import CreateForm from './CreateForm';
 // import firebase from 'firebase/app';
-import 'firebase/auth';
+// import 'firebase/auth';
+// import './firebase/firebase';
+// import { addPoll } from './actions/polls';
+// import { setTextFilter } from './actions/filters';
+// import getVisiblePolls from './selectors/polls';
+
 
 const store = configureStore();
 const jsx = (
