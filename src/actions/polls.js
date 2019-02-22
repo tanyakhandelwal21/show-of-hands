@@ -8,7 +8,6 @@ export const addPoll = (poll) => ({
 });
 
 
-
 export const listPolls = (polls) => ({
   type: 'LIST_POLLS',
   polls
