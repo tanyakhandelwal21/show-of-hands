@@ -11,8 +11,11 @@ export const Header = ({ startLogout, addPoll }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Show Of Hands</h1>
         </Link>
-        <NavLink to='dashboard/polls/add' className="is-active" exact={true}>Create Poll</NavLink>
-        <button className="button button--link" onClick={startLogout}>Logout</button>
+        <button onClick={function(e){
+e.onClick= window.location.href="/dashboard/polls/add"
+        }}> Create A Poll
+        </button>
+         <button className="button button--link" onClick={startLogout}>Logout</button>
 
       </div>
     </div>
