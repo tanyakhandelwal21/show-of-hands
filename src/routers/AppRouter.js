@@ -22,11 +22,10 @@ const AppRouter = () => (
         <PublicRoute path="/" component={LoginPage} exact={true} />
         <PrivateRoute path="/dashboard/" component={WelcomePage} exact={true} />
         <PrivateRoute path="/dashboard/polls" component={DashboardPage} exact={true} />
-        <PrivateRoute path="/dashboard/add-poll" component={AddPollPage} exact={true} />
+        <PrivateRoute path="/dashboard/add-poll" component={CreatePage} exact={true} />
+        <PrivateRoute path="/dashboard/polls/edit" component={EditPollPage} exact={true} />
         <PrivateRoute path="/dashboard/polls/:id" component={ViewPollPage} exact={true} />
         <PrivateRoute path="/dashboard/polls/:id/edit" component={EditPollPage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/add" component={CreatePage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/edit" component={EditPollPage} exact={true} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

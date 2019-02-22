@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PollForm from './PollForm';
+import PollForm from './CreateForm';
 import { startEditPoll, startRemovePoll, startGetPoll } from '../actions/polls';
 import getPoll from '../selectors/get-poll';
 

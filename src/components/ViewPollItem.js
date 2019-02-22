@@ -20,11 +20,6 @@ export const ViewPollItem = ({ poll }) => {
           Edit
         </button>  
       </Link>
-      <Link to={`/dashboard/polls/${id}/delete`}>
-        <button>
-          Delete
-        </button>  
-      </Link>
     </div>
   );
 };

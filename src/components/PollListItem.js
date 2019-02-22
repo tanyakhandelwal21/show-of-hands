@@ -4,9 +4,10 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 function ChoiceListItem(props) {
-    /* TODO: make inner span invisible if necessary */
+    console.log(props.text)
+    const span = props.isVisible ? <span> - {props.votes || 0} votes</span> : null
     return (
-        <span>{props.text}<span> - {props.votes} votes</span></span>
+        <span>{props.text} {span}</span>
     );
 }
 
@@ -27,7 +28,7 @@ class PollListItem extends React.Component {
     render() {
         // TODO: change isVisible to depend on voting
         const choicesList = (this.poll.choices || []).map((choice, i) =>
-            <li key={i}><ChoiceListItem text={choice.text} votes={choice.votes} isVisible={true}/></li>
+            <li key={i}><ChoiceListItem text={choice.text} votes={choice.votes} isVisible={this.poll.public_results}/></li>
         );
 
         return (
