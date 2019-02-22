@@ -19,6 +19,7 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard" component={DashboardPage} exact={true} />
         <PrivateRoute path="/dashboard/polls/add" component={AddPollPage} exact={true} />
         <PrivateRoute path="/dashboard/polls/edit" component={EditPollPage} exact={true} />
+    
         <Route component={NotFoundPage} />
       </Switch>
     </div>

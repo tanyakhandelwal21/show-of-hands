@@ -38,4 +38,13 @@
 
 body {
     background: #051633;
+    max-width: 10%;
+    border-style: hidden;
+    margin: 10%;
+}
+
+.bigdiv {
+    max-width: 10%;
+    border-style: hidden;
+    margin: 10%;
 }
