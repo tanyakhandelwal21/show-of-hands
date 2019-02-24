@@ -1,5 +1,6 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
+import firebase from '../firebase/firebase';
 
 // ADD_EXPENSE
 export const addPoll = (poll) => ({
@@ -31,7 +32,7 @@ export const listAllPolls = (pollData = {}) => {
 };
 
 export const startAddPoll = (pollData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const {
         title = '',
         description = '',
@@ -41,7 +42,9 @@ export const startAddPoll = (pollData = {}) => {
         end_date = new Date(),
         public_results = false
     } = pollData;
+
     const poll = { title, description, category, choices, start_date, end_date, public_results };
+    poll.author = getState().auth.uid
 
     database.ref('polls').push(poll).then((ref) => {
       dispatch(getPoll({
@@ -52,10 +55,15 @@ export const startAddPoll = (pollData = {}) => {
 };
 
 export const startGetPoll = (pollData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     database.ref('polls').child(pollData.id).once("value").then((ref) => {
       const poll = ref.val()
       poll.id = ref.key
+      poll.editable = (poll.author === getState().auth.uid)
+      if (pollData.edit && !poll.editable) {
+        window.location = "/dashboard/polls"
+        return;
+      }
       dispatch(getPoll(poll));
     }).catch(e => console.error(e))
   };
@@ -63,7 +71,7 @@ export const startGetPoll = (pollData = {}) => {
 
 export const startEditPoll = (id, newData) => {
   return (dispatch) => {
-    database.ref('polls').child(id).set(newData).then(() => {
+    database.ref('polls').child(id).update(newData).then(() => {
       dispatch(editPoll({
         id
       }));

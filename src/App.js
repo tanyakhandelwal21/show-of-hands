@@ -21,20 +21,25 @@ import LoginForm from './LoginForm';
 
 
 const store = configureStore();
-const jsx = (
+const App = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 );
+
+const renderLoading = () => {
+  ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+}
+
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
-    ReactDOM.render(jsx, document.getElementById('app'));
+    ReactDOM.render(App, document.getElementById('app'));
     hasRendered = true;
   }
 };
 
-ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+renderLoading()
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -49,3 +54,6 @@ firebase.auth().onAuthStateChanged((user) => {
     history.push('/');
   }
 });
+
+
+export { renderApp, renderLoading, App as default }

@@ -16,11 +16,16 @@ exports[`should render Header correctly 1`] = `
         to="/dashboard"
       >
         <h1>
-          Boilerplate
+          Show Of Hands
         </h1>
       </Link>
       <button
-        className="button button--link"
+        onClick={[Function]}
+      >
+        Create a Poll
+      </button>
+      <button
+        className="button--logout button button--link"
         onClick={[Function]}
       >
         Logout
