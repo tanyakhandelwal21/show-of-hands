@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 import { NavLink } from 'react-router-dom'
 
-export const Header = ({ startLogout, addPoll }) => (
+export const Header = ({ startLogout }) => (
   <header className="header">
     <div className="content-container">
       <div className="header__content">
@@ -16,7 +16,7 @@ export const Header = ({ startLogout, addPoll }) => (
         }}>
           Create a Poll
         </button>
-        <button className="button button--link" onClick={startLogout}>Logout</button>
+        <button className="button--logout button button--link" onClick={startLogout}>Logout</button>
 
       </div>
     </div>
@@ -25,7 +25,6 @@ export const Header = ({ startLogout, addPoll }) => (
 
 const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatch(startLogout())
-
 });
 
 
