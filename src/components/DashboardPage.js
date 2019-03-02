@@ -4,6 +4,7 @@ import PollList from './PollList';
 import PollListFilters from './PollListFilters';
 import PollsSummary from './PollsSummary';
 import { listAllPolls } from '../actions/polls';
+import './DashboardPage.css'
 
 const DashboardPage = (props) => (
 	<div className="bigdiv">

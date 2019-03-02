@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import './PollForm.css';
 
 export default class PollForm extends React.Component {
   constructor(props) {

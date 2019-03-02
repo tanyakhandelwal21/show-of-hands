@@ -1,3 +1,10 @@
+body {
+    background-color: aqua;
+    max-width: 10%;
+    border-style: hidden;
+    margin: 10%;
+}
+
 .create-poll {
     width: 50%;
     display: inline-block;
@@ -34,13 +41,6 @@
     text-align: center;
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-body {
-    background: #051633;
-    max-width: 10%;
-    border-style: hidden;
-    margin: 10%;
 }
 
 .bigdiv {
