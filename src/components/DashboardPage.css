@@ -6,7 +6,7 @@ body {
 }
 
 .create-poll {
-    width: 50%;
+    width: 100%;
     display: inline-block;
     border: none;
     padding: 1rem 2rem;
