@@ -41,7 +41,8 @@ class CreateForm extends React.Component {
             newChoiceText: '',
             start_date: new Date(),
             end_date: this.getDate(0),
-            public_results: true
+            public_results: true,
+            responders: []
         };
         this.updateChoiceValue = this.updateChoiceValue.bind(this);
         this.updateValue = this.updateValue.bind(this);
