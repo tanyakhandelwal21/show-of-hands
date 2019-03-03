@@ -6,7 +6,7 @@ import { startAddPoll } from '../actions/polls';
 export class AddPollPage extends React.Component {
   constructor (props) {
     super(props);
-    this.onSubmit = this.Submit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   onSubmit (poll) {
     this.props.startAddPoll(poll);
