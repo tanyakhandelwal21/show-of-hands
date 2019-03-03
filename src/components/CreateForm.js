@@ -4,15 +4,12 @@ import React from 'react';
 // Component for one choice in the poll
 function Choice(props) {
     return (
-        <div>
-            <span className="choice-number">{props.num}</span>
-            <input
-                type="text"
-                className="choice-title"
-                placeholder={"Choice "+props.num}
-                value={props.text}
-                onChange={(e) => props.onChange(e, props.num-1)}/>
-        </div>
+        <input
+            type="text"
+            className="choice-title"
+            placeholder={"Choice "+props.num}
+            value={props.text}
+            onChange={(e) => props.onChange(e, props.num-1)}/>
     );
 }
 
@@ -50,6 +47,25 @@ class CreateForm extends React.Component {
         this.updateValue = this.updateValue.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+
+  componentDidMount () {
+    const props = this.props;
+    if (props.poll && props.poll.id) {
+      this.setState({
+            title: props.poll.title,
+            description: props.poll.title,
+            textChoices: (props.poll.choices || []).map(c => c.text),
+            choices: props.poll.choices || [],
+            category: props.poll.category,
+            newChoiceText: '',
+            start_date: props.poll.start_date,
+            end_date: props.poll.end_date,
+            public_results: props.poll.public_results,
+            responders: []
+        })
+    }
+  }
 
     // Methods to update variables when the form is changed by user
     updateValue(e, attr) {
@@ -97,6 +113,26 @@ class CreateForm extends React.Component {
             newChoiceText: ''
         })
     }
+    removeChoice(text) {
+        let index = 2;
+        let tc = this.state.textChoices.slice();
+        for (let i = 2; i < tc.length; i++) {
+            if (tc[i] === text) {
+                index = i;
+                break;
+            }
+        }
+        console.log("Remove " + text + ": index " + index);
+        console.log(tc);
+        tc.splice(index, 1);
+        console.log(tc);
+        let c = this.state.choices.slice();
+        c.splice(index, 1);
+        this.setState({
+            textChoices: tc,
+            choices: c
+        });
+    }
     updatePublicResults(e) {
         this.setState({
             public_results: !e.target.checked
@@ -112,7 +148,8 @@ class CreateForm extends React.Component {
 
     // Send form data to backend API
     // TODO: Add user_id
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault()
         this.props.onSubmit({
             title: this.state.title,
             description: this.state.description,
@@ -128,11 +165,17 @@ class CreateForm extends React.Component {
     render() {
         let i = 1;
         const textChoicesList = this.state.textChoices.map((choice) =>
-            <li><Choice num={i++} text={choice} onChange={this.updateChoiceValue}/></li>
+            <li>
+                <Choice num={i++} text={choice} onChange={this.updateChoiceValue}/>
+                { i >= 4 ? (
+                    <input type="button" value="-" onClick={() => this.removeChoice(choice)}/>
+                ) : null
+                }
+            </li>
         );
-        i = 0;
-        const categories = this.categories.map((category) =>
-            <option value={i++}>{category}</option>
+
+        const categories = this.categories.map((category, i) =>
+            <option key={i} value={i+1}>{category}</option>
         );
         return (
             <form onSubmit={this.handleSubmit} >
@@ -194,7 +237,7 @@ class CreateForm extends React.Component {
                 <label>Make end results private</label>
                 <br/>
 
-                <input type="submit" value="Create"/>
+                <input type="submit" value="Save"/>
             </form>
         )
     }

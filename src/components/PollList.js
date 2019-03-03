@@ -28,8 +28,8 @@ export const PollList = (props) => (
       (!props.polls || props.polls.length === 0) ? (
         <p>No polls</p>
       ) : (
-          props.polls.map((poll) => {
-            return <PollListItem data={poll} />;
+          props.polls.map((poll, i) => {
+            return <PollListItem key={i} data={poll} />;
           })
         )
     }
@@ -38,7 +38,6 @@ export const PollList = (props) => (
 
 const mapStateToProps = (state) => {
   const polls = selectPolls(state.polls, state.filters)
-
   return {
     polls
   };
