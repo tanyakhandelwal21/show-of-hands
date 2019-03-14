@@ -2,22 +2,6 @@ import uuid from 'uuid';
 import database from '../firebase/firebase';
 import firebase from '../firebase/firebase';
 
-// ADD_EXPENSE
-export const addPoll = (poll) => ({
-  type: 'ADD_POLL',
-  poll
-});
-
-export const listPolls = (polls) => ({
-  type: 'LIST_POLLS',
-  polls
-});
-
-export const getPoll = (poll) => ({
-  type: 'GET_POLL',
-  poll
-});
-
 // Check if the poll is expired
 const isExpired = poll => new Date(poll.end_date) < new Date()
 
@@ -72,6 +56,22 @@ export const startGetPoll = (pollData = {}) => {
   };
 };
 
+export const startAnswerPoll = (id, answerIndex, userId, newVotesCount) => {
+  return (dispatch) => {
+    const pollRef = database.ref('polls').child(id);
+
+
+    Promise.all([
+      pollRef.child("choices").child(answerIndex).child("votes").set(newVotesCount),
+      pollRef.child("answers").child(userId).set(answerIndex)
+    ]).then(() => {
+        dispatch(answerPoll({
+            answer: answerIndex
+        }));
+    });
+  };
+};
+
 export const startEditPoll = (id, newData) => {
   return (dispatch) => {
     database.ref('polls').child(id).update(newData).then(() => {
@@ -93,15 +93,40 @@ export const startRemovePoll = (id) => {
   };
 };
 
-// REMOVE_EXPENSE
+// ADD_POLL
+export const addPoll = (poll) => ({
+  type: 'ADD_POLL',
+  poll
+});
+
+// LIST POLL
+export const listPolls = (polls) => ({
+  type: 'LIST_POLLS',
+  polls
+});
+
+// GET POLL
+export const getPoll = (poll) => ({
+  type: 'GET_POLL',
+  poll
+});
+
+// REMOVE_POLL
 export const removePoll = ({ id } = {}) => ({
   type: 'REMOVE_POLL',
   id
 });
 
-// EDIT_EXPENSE
+// EDIT_POLL
 export const editPoll = (id, updates) => ({
   type: 'EDIT_POLL',
+  id,
+  updates
+});
+
+// ANSWER POLL
+export const answerPoll = (id, updates) => ({
+  type: 'ANSWER_POLL',
   id,
   updates
 });
