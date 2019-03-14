@@ -18,6 +18,9 @@ export const getPoll = (poll) => ({
   poll
 });
 
+// Check if the poll is expired
+const isExpired = poll => new Date(poll.end_date) < new Date()
+
 export const listAllPolls = (pollData = {}) => {
   return (dispatch) => {
     database.ref('polls').once("value").then((polls) => {
@@ -25,7 +28,7 @@ export const listAllPolls = (pollData = {}) => {
       const pollsArray = Object.keys(polls).map(id => {
         polls[id].id = id
         return polls[id]
-      })
+      }).filter(c => !isExpired(c))
       dispatch(listPolls(pollsArray))
     });
   };
@@ -60,7 +63,7 @@ export const startGetPoll = (pollData = {}) => {
       const poll = ref.val()
       poll.id = ref.key
       poll.editable = (poll.author === getState().auth.uid)
-      if (pollData.edit && !poll.editable) {
+        if (pollData.edit && !poll.editable || isExpired(poll)) {
         window.location = "/dashboard/polls"
         return;
       }
