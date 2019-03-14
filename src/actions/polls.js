@@ -2,35 +2,6 @@ import uuid from 'uuid';
 import database from '../firebase/firebase';
 import firebase from '../firebase/firebase';
 
-<<<<<<< HEAD
-// ADD_EXPENSE
-export const addPoll = (poll) => ({
-    type: 'ADD_POLL',
-    poll
-});
-
-export const listPolls = (polls) => ({
-    type: 'LIST_POLLS',
-    polls
-});
-
-export const getPoll = (poll) => ({
-    type: 'GET_POLL',
-    poll
-});
-
-export const listAllPolls = (pollData = {}) => {
-    return (dispatch) => {
-        database.ref('polls').once("value").then((polls) => {
-            polls = polls.val()
-            const pollsArray = Object.keys(polls).map(id => {
-                polls[id].id = id
-                return polls[id]
-            })
-            dispatch(listPolls(pollsArray))
-        });
-    };
-=======
 // Check if the poll is expired
 const isExpired = poll => new Date(poll.end_date) < new Date()
 
@@ -45,7 +16,6 @@ export const listAllPolls = (pollData = {}) => {
       dispatch(listPolls(pollsArray))
     });
   };
->>>>>>> a451f7ea3ae4bb24ddf92ec75a00278ac66a58e8
 };
 
 export const startAddPoll = (pollData = {}) => {
@@ -80,17 +50,6 @@ export const startAddPoll = (pollData = {}) => {
 };
 
 export const startGetPoll = (pollData = {}) => {
-<<<<<<< HEAD
-    return (dispatch, getState) => {
-        database.ref('polls').child(pollData.id).once("value").then((ref) => {
-            const poll = ref.val();
-            poll.id = ref.key;
-            dispatch(getPoll(poll));
-        }).catch(e => {
-            console.error(e)
-        });
-    };
-=======
   return (dispatch, getState) => {
     database.ref('polls').child(pollData.id).once("value").then((ref) => {
       const poll = ref.val()
@@ -103,7 +62,6 @@ export const startGetPoll = (pollData = {}) => {
       dispatch(getPoll(poll));
     }).catch(e => console.error(e))
   };
->>>>>>> a451f7ea3ae4bb24ddf92ec75a00278ac66a58e8
 };
 
 export const startAnswerPoll = (id, answerIndex, userId, newVotesCount) => {
@@ -143,14 +101,6 @@ export const startRemovePoll = (id) => {
     };
 };
 
-<<<<<<< HEAD
-// REMOVE_EXPENSE
-export const removePoll = ({
-    id
-} = {}) => ({
-    type: 'REMOVE_POLL',
-    id
-=======
 // ADD_POLL
 export const addPoll = (poll) => ({
   type: 'ADD_POLL',
@@ -173,7 +123,6 @@ export const getPoll = (poll) => ({
 export const removePoll = ({ id } = {}) => ({
   type: 'REMOVE_POLL',
   id
->>>>>>> a451f7ea3ae4bb24ddf92ec75a00278ac66a58e8
 });
 
 // EDIT_POLL

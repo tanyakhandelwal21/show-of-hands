@@ -6,7 +6,6 @@ import AddPollPage from '../components/AddPollPage';
 import AnswerPollPage from '../components/AnswerPollPage';
 import CreatePage from '../components/CreatePage';
 import EditPollPage from '../components/EditPollPage';
-import AnswerPollPage from '../components/AnswerPollPage';
 import NotFoundPage from '../components/NotFoundPage';
 import WelcomePage from '../components/WelcomePage';
 import LoginPage from '../components/LoginPage';
