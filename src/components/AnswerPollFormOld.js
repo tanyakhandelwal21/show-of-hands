@@ -34,7 +34,7 @@ class AnswerPollForm extends React.Component {
         if (!poll.responders) {
             poll.responsers = [user.id];
         } else {
-            poll.responders = poll.responders(users.id);
+            poll.responders = poll.responders.concat([users.id]);
         }
         for (let i = 0; i < poll.choices.length; i++) {
             if (answerChoices[i].isSelected) {
