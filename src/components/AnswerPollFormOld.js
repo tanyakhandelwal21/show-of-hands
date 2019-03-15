@@ -7,10 +7,10 @@ import getPoll from '../selectors/get-poll';
 class AnswerPollForm extends React.Component {
     constructor(props) {
         super(props);
-
+debugger
         this.answerChoices = this.props.poll.choices.slice();
-        for (let i = 0; i < answerChoices.length; i++) {
-            answerChoices[i].isSelected = false;
+        for (let i = 0; i < this.answerChoices.length; i++) {
+            this.answerChoices[i].isSelected = false;
         }
         this.selectedChoice = null;
         this.handleChoiceClick = this.handleChoiceClick.bind(this);
@@ -42,21 +42,29 @@ class AnswerPollForm extends React.Component {
             }
             delete answerChoices[i].isSelected;
         }
+        // TODO 
         startEditPoll(poll.id, poll)(() => {
             location.reload();
         });
     }
 
     render() {
+        debugger
         const poll = this.props.poll;
 
-        const choiceButtons = poll.answerChoices.map((choice) => (
+        const choiceButtons = this.answerChoices.map((choice) => (
             <div>
-                <input  type="button" value={choice.text}
-                className={choice.isSelected ? "click-state" : "base-state"}
-                onClick={e => this.handleChoiceClick(e)} />
+                <input
+                    type="button"
+                    value={choice.text}
+                    className={
+                        choice.isSelected ? "click-state" : "base-state"
+                    }
+                    onClick={e => this.handleChoiceClick(e)}
+                />
             </div>
         ));
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <h1>{poll.title}</h1>

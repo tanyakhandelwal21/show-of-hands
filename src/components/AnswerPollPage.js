@@ -96,8 +96,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, route) => {
     const pollId = route.location.pathname.match(/\/polls\/(.*)\/answer\/?/)[1]
     return dispatch(startGetPoll({
-        id: pollId,
-        edit: true
+        id: pollId
     }))
 };
 
