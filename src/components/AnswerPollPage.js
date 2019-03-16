@@ -32,7 +32,7 @@ export class EditPollPage extends React.Component {
             return null
         }
 
-        if ((this.state && this.state.poll_answered) || Object(this.props.poll.answers)[this.props.uid]) {
+        if ((this.state && this.state.poll_answered) || Object(this.props.poll.responses)[this.props.uid]) {
             return <div>
                 <div className="page-header">
                     <div className="content-container">

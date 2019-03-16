@@ -72,7 +72,7 @@ export const startAnswerPoll = (id, answerIndex, userId, newVotesCount) => {
 
     Promise.all([
       pollRef.child("choices").child(answerIndex).child("votes").set(newVotesCount),
-      pollRef.child("answers").child(userId).set(answerIndex)
+      pollRef.child("responses").child(userId).set(answerIndex)
     ]).then(() => {
         dispatch(answerPoll({
             answer: answerIndex
