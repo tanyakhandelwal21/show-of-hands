@@ -29,7 +29,7 @@ export const PollList = (props) => (
         <p>No polls</p>
       ) : (
           props.polls.map((poll, i) => {
-            return <PollListItem key={i} data={poll} />;
+            return <PollListItem uid={props.uid} key={i} data={poll} />;
           })
         )
     }
@@ -39,7 +39,8 @@ export const PollList = (props) => (
 const mapStateToProps = (state) => {
   const polls = selectPolls(state.polls, state.filters)
   return {
-    polls
+    polls,
+    uid: state.auth.uid
   };
 };
 
