@@ -22,6 +22,7 @@ db.collection("cities").doc("LA").set({
 });
 */
 
+
 class PollList extends React.Component {
 
   render () {
@@ -33,11 +34,10 @@ class PollList extends React.Component {
     }
 
     const pollItems = props.polls.map((poll) => {
-      return <PollListItem key={poll.id} data={poll} />;
+      return <PollListItem uid={props.uid} key={poll.id} data={poll} />;
     })
 
     return <div>
-
       {pollItems}
     </div>
   }
@@ -46,7 +46,8 @@ class PollList extends React.Component {
 const mapStateToProps = (state) => {
   const polls = selectPolls(state.polls, state.filters)
   return {
-    polls
+    polls,
+    uid: state.auth.uid
   };
 };
 

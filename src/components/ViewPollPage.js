@@ -19,3 +19,4 @@ const mapDispatchToProps = (dispatch, route) => {
 };
 
 export default connect(undefined, mapDispatchToProps)(ViewPollPage);
+
