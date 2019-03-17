@@ -67,6 +67,7 @@ export class PollListFilters extends React.Component {
           <option value="">All Polls</option>
           <option selected value="ACTIVE">Active Polls</option>
           <option value="INACTIVE">Inactive Polls</option>
+          <option value="TRENDING">Trending Polls</option>
         </select>
         <br/>
         <DateRangePicker
