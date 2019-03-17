@@ -20,7 +20,9 @@ html {
  * Remove the margin in all browsers (opinionated).
  */
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: #061938;
+ }
 
 /**
  * Add the correct display in IE 9-.
@@ -441,25 +443,30 @@ button:disabled {
   text-decoration: none; }
 
 .button--link {
-  background: none; }
+  background: none;
+  color: #061938;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+ }
 
 .button--secondary {
   background: #888; }
 
 .header {
-  background: #364051; }
+  background: #fff4db; }
 
 .header__content {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 1.2rem 0; }
+  padding: 0.5rem 0; }
 
 .header__title {
-  color: white;
-  text-decoration: none; }
-  .header__title h1 {
-    margin: 0; }
+  color: #061938;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-variant: small-caps;
+  text-decoration: none;
+  font-weight: bolder;
+}
 
 .content-container {
   margin: 0 auto;
