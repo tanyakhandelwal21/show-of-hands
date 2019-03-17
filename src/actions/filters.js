@@ -25,3 +25,10 @@ export const setEndDate = (endDate) => ({
   type: 'SET_END_DATE',
   endDate
 });
+
+export const setCategoryFilter = (category = '') => ({
+  type: 'SET_CATEGORY_FILTER',
+  category
+});
+
+

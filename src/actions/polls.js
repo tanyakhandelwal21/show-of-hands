@@ -22,12 +22,12 @@ export const startAddPoll = (pollData = {}) => {
     return (dispatch, getState) => {
         const {
             title = '',
-                description = '',
-                category = 0,
-                choices = [],
-                start_date = new Date(),
-                end_date = new Date(),
-                public_results = false
+            description = '',
+            category = 0,
+            choices = [],
+            start_date = new Date(),
+            end_date = new Date(),
+            public_results = false
         } = pollData;
 
         const poll = {
@@ -39,6 +39,9 @@ export const startAddPoll = (pollData = {}) => {
             end_date,
             public_results
         };
+        
+        poll.start_date = new Date(poll.start_date).getTime()
+        poll.end_date = new Date(poll.end_date).getTime()
         poll.author = getState().auth.uid
 
         database.ref('polls').push(poll).then((ref) => {
