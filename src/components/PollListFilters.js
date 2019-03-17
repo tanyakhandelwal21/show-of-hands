@@ -37,6 +37,7 @@ export class PollListFilters extends React.Component {
       <div>
         <input
           type="text"
+          placeholder="search for a poll"
           value={filters ? filters.text : ''}
           onChange={this.onTextChange}
         />

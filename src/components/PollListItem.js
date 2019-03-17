@@ -26,9 +26,9 @@ class PollListItem extends React.Component {
     }
 
     render() {
-        // TODO: change isVisible to depend on voting
-        const choicesList = (this.poll.choices || []).map((choice, i) =>
-            <li key={i}><ChoiceListItem text={choice.text} votes={choice.votes} isVisible={false}/></li>
+        // TODO: change isVisible to depend on whether or not you voted
+        const choicesList = (this.poll.choices || []).map((choice) =>
+            <li><ChoiceListItem text={choice.text} votes={choice.votes} isVisible={false}/></li>
         );
 
         return (
