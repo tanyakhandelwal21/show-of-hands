@@ -6,7 +6,8 @@ const filtersReducerDefaultState = {
   text: '',
   sortBy: 'date',
   startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  endDate: moment().endOf('month'),
+  pollStatus: "ACTIVE"
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -19,13 +20,16 @@ export default (state = filtersReducerDefaultState, action) => {
       return Object.assign(state, {
         category: action.category
       });
-    case 'SORT_BY_NUMBEROFOPTIONS':
+    case "POLL_STATUS":
       return Object.assign(state, {
-        sortBy: 'numberOfOptions'
+        pollStatus: action.status
       });
-    case 'SORT_BY_DATE':
+    case "DATE_ASC":
+    case "DATE_DESC":
+    case "NUMBER_OF_RESPONSES_ASC":
+    case "NUMBER_OF_RESPONSES_DESC":
       return Object.assign(state, {
-        sortBy: 'date'
+        sortBy: action.type
       });
     case 'SET_START_DATE':
       return Object.assign(state, {

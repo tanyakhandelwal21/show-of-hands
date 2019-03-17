@@ -139,7 +139,6 @@ class CreateForm extends React.Component {
     }
 
     // Send form data to backend API
-    // TODO: Add user_id
     handleSubmit(e) {
         e.preventDefault()
         this.props.onSubmit({
@@ -147,7 +146,6 @@ class CreateForm extends React.Component {
             description: this.state.description,
             category: this.state.category,
             choices: this.state.choices,
-            start_date: new Date(),
             end_date: this.state.end_date,
             public_results: this.state.public_results,
             responders: [],
