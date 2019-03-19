@@ -1,12 +1,12 @@
-// Expenses Reducer
+import selectPolls from '../selectors/polls';
 
-const pollsReducerDefaultState = [];
+const pollsReducerDefaultState = { polls: [] }
 export default (state = pollsReducerDefaultState, action) => {
   switch (action.type) {
     case 'ADD_POLL':
       return [
         state,
-        poll: action.poll
+        poll, action.poll
       ];
     case 'REMOVE_POLL':
       return state.filter(({ id }) => id !== action.id);
@@ -22,7 +22,9 @@ export default (state = pollsReducerDefaultState, action) => {
         };
       });
     case 'LIST_POLLS':
-      return action.polls;
+    return {
+      polls: action.polls || state.polls
+    }
     case 'GET_POLL':
       return action.poll;
     default:
