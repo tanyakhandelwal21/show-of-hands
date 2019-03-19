@@ -12,9 +12,14 @@ export const Header = ({ startLogout, addPoll }) => (
           <h1 className="header1">Show Of Hands</h1>
         </Link>
         <button onClick={function(e){
-          e.onClick=window.location.href='/dashboard/add-poll'
+          e.onClick=window.location.href='/dashboard/polls'
         }}>
           Create a Poll
+        </button>
+        <button onClick={function(e){
+          e.onClick=window.location.href='/dashboard/polls'
+        }}>
+          View Poll
         </button>
         <button className="button button--link" onClick={startLogout}>Logout</button>
         
