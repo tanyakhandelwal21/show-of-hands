@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 import pollsReducer from '../reducers/polls';
 import pollItemReducer from '../reducers/poll-item';
-import filtersReducer from '../reducers/filters'l
+import filtersReducer from '../reducers/filters';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
