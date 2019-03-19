@@ -39,14 +39,7 @@ section {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1 {
-  color: white;
-  font-size: 2em;
-  margin: 0.67em 0; }
 
-h2 {
-  color: aqua;
-}
 
 /* Grouping content
    ========================================================================== */
@@ -1443,5 +1436,29 @@ button:disabled {
 .header1 {
   color: aqua;
 }
+
+h2 {
+  color: aqua;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  font-size: 2em;
+  margin: 0.67em 0; 
+  text-decoration: underline;
+  text-decoration-color: #061938;
+}
+
+h1:active {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #061938;
+}
+h1:visited {
+  text-decoration: underline;
+  text-decoration-color: #061938;
+}
+
 
 /*# sourceMappingURL=styles.css.map*/
