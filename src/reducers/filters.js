@@ -12,30 +12,29 @@ const filtersReducerDefaultState = {
 export default (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     case 'SET_TEXT_FILTER':
-      return {
-        ...state,
+      return Object.assign(state, {
         text: action.text
-      };
+      });
+    case 'SET_CATEGORY_FILTER':
+      return Object.assign(state, {
+        category: action.category
+      });
     case 'SORT_BY_NUMBEROFOPTIONS':
-      return {
-        ...state,
+      return Object.assign(state, {
         sortBy: 'numberOfOptions'
-      };
+      });
     case 'SORT_BY_DATE':
-      return {
-        ...state,
+      return Object.assign(state, {
         sortBy: 'date'
-      };
+      });
     case 'SET_START_DATE':
-      return {
-        ...state,
+      return Object.assign(state, {
         startDate: action.startDate
-      };
+      });
     case 'SET_END_DATE':
-      return {
-        ...state,
+      return Object.assign(state, {
         endDate: action.endDate
-      };
+      });
     default:
       return state;
   }
