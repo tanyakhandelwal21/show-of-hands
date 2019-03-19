@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 import pollsReducer from '../reducers/polls';
 import pollItemReducer from '../reducers/poll-item';
+import filtersReducer from '../reducers/filters'l
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -12,7 +13,8 @@ export default () => {
     combineReducers({
       auth: authReducer,
       polls: pollsReducer,
-      poll: pollItemReducer
+      poll: pollItemReducer,
+      filters: filtersReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );
