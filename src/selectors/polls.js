@@ -14,7 +14,7 @@ export default (polls, o) => {
     const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true;
     const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
     const textMatch = poll.title.toLowerCase().includes(text.toLowerCase());
-    const categoryMatch = category ? +poll.category === +category : true;
+    const categoryMatch = category ? +poll.category === +category : true
     return startDateMatch && endDateMatch && textMatch && categoryMatch;
   }).sort((a, b) => {
     if (sortBy === 'date') {
