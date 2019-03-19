@@ -28,10 +28,10 @@ export default (polls, o) => {
           return a.start_date < b.start_date ? -1 : 1;
 
         case "NUMBER_OF_RESPONSES_ASC":
-          return countRes(a.start_date) < countRes(b.start_date) ? -1 : 1;
+          return countRes(a) < countRes(b) ? -1 : 1;
 
         case "NUMBER_OF_RESPONSES_DESC":
-          return countRes(a.start_date) > countRes(b.start_date) ? -1 : 1;
+          return countRes(a) > countRes(b) ? -1 : 1;
       }
   });
 };

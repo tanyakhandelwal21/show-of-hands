@@ -19,9 +19,20 @@ class PollListItem extends React.Component {
     }
 
     render() {
-        // TODO: change isVisible to depend on whether or not you voted
+        // If the public_results is:
+        //. - false: the results wqill never be disaplyed
+        //. - true: the results will be visible after the user responded
+
+        // public_results:
+        //.      true.        false
+        //.       |.              |
+        //.   user responded?     |
+        //.     |yes      |no     |
+        //.  DISPLAY.     +----- DO NOT DISPLAY
+        //.  RESULTS.            THE RESULTS
+
         const choicesList = (this.poll.choices || []).map((choice) =>
-            <li><ChoiceListItem text={choice.text} votes={choice.votes} isVisible={false}/></li>
+            <li><ChoiceListItem text={choice.text} votes={choice.votes} isVisible={this.poll.public_results && Object(this.poll.responses)[this.props.uid]}/></li>
         );
 
         return (
