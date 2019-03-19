@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setTextFilter, sortByDate, sortByNumberOfOptions, setStartDate, setEndDate } from '../actions/filters';
+
 import { setCategoryFilter, setTextFilter, sortByDate, sortByNumberOfOptions, setStartDate, setEndDate } from '../actions/filters';
 	import { listPolls } from '../actions/polls';
 	import { getCategoryOptions } from '../util/categories.js';

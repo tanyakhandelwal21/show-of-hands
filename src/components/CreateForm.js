@@ -169,9 +169,7 @@ class CreateForm extends React.Component {
             </li>
         );
         i = 0;
-        const categories = this.categories.map((category) =>
-            <option key={i} value={i++}>{category}</option>
-        );
+      
         const categories = getCategoryOptions()
 	
         return (
