@@ -1,7 +1,7 @@
 import selectPolls from '../selectors/polls';
 
-//Polls Reducer
-const pollsReducerDefaultState = [];
+// Polls Reducer
+const pollsReducerDefaultState = { polls: [] }
 export default (state = pollsReducerDefaultState, action) => {
   switch (action.type) {
     case 'ADD_POLL':
