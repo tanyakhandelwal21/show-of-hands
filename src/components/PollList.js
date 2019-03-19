@@ -21,20 +21,25 @@ db.collection("cities").doc("LA").set({
     console.error("Error writing document: ", error);
 });
 */
+class PollList extends React.Component {
+	
+  render () {
 
-export const PollList = (props) => (
-  <div>
-    {
-      (!props.polls || props.polls.length === 0) ? (
-        <p>No polls</p>
-      ) : (
-          props.polls.map((poll, i) => {
-            return <PollListItem key={i} data={poll} />;
-          })
-        )
+    const props = this.props;
+
+    if (!props.polls || props.polls.length === 0) {
+      return <p>No polls</p>;
     }
-  </div>
-);
+    const pollItems = props.polls.map((poll) => {
+      return <PollListItem key={poll.id} data={poll} />;
+    })
+
+    return <div>
+
+      {pollItems}
+    </div>
+  }
+}
 
 const mapStateToProps = (state) => {
   const polls = selectPolls(state.polls, state.filters)
