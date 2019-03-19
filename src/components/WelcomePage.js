@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import './WelcomePage.css'
 
 const WelcomePage = (props) => (
-	<div>
-		<a classname = "view-polls-link" href="/dashboard/polls/">
-	        <h1>View Polls</h1>
+	<div className="main-page-links">
+		<a href="/dashboard/polls/">
+	        <h1>View Poll</h1>
 	    </a>   
 	    <a href="/dashboard/add-poll/">
-	        <h1>Add Poll</h1>
-	    </a>    
-	</div>
+	    	<h1>Add Poll</h1>
+	    </a>  
+	</div>  
 )
  
 

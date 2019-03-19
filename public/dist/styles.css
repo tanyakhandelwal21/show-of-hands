@@ -40,8 +40,13 @@ section {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
+  color: white;
   font-size: 2em;
   margin: 0.67em 0; }
+
+h2 {
+  color: aqua;
+}
 
 /* Grouping content
    ========================================================================== */
@@ -409,7 +414,14 @@ button:disabled {
   cursor: default; }
 
 .is-active {
-  font-weight: bold; }
+  color: #fff4db;
+  font-weight: bold; 
+}
+
+.is-active:visited
+{
+  color: #fff4db;
+}
 
 .box-layout {
   align-items: center;
@@ -1419,5 +1431,17 @@ button:disabled {
 
 .loginContainer {
   margin: 10px; }
+
+.view-poll-link {
+  color: white;
+}
+
+.main-page-links {
+  color: white;
+}
+
+.header1 {
+  color: aqua;
+}
 
 /*# sourceMappingURL=styles.css.map*/
