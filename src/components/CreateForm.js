@@ -1,5 +1,5 @@
 import React from 'react';
-// import './CreateForm.css';
+import CATEGORIES, { getCategoryOptions } from '../util/categories.js';
 
 // Component for one choice in the poll
 function Choice(props) {
@@ -17,14 +17,7 @@ class CreateForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.categories = [
-            'ENTERTAINMENT',
-            'FOOD',
-            'LIFESTYLE',
-            'MISCELLANEOUS',
-            'SURVEY',
-            'TECHNOLOGY'
-        ];
+        this.categories = CATEGORIES;
 
         this.state = {
             title: '',
@@ -146,7 +139,6 @@ class CreateForm extends React.Component {
     }
 
     // Send form data to backend API
-    // TODO: Add user_id
     handleSubmit(e) {
         e.preventDefault()
         this.props.onSubmit({
@@ -154,7 +146,6 @@ class CreateForm extends React.Component {
             description: this.state.description,
             category: this.state.category,
             choices: this.state.choices,
-            start_date: new Date(),
             end_date: this.state.end_date,
             public_results: this.state.public_results,
             responders: [],
@@ -164,7 +155,7 @@ class CreateForm extends React.Component {
     render() {
         let i = 1;
         const textChoicesList = this.state.textChoices.map((choice) =>
-            <li>
+            <li key={i}>
                 <Choice num={i++} text={choice} onChange={this.updateChoiceValue}/>
                 { i >= 4 ? (
                     <input type="button" value="-" onClick={() => this.removeChoice(choice)}/>
@@ -172,10 +163,8 @@ class CreateForm extends React.Component {
                 }
             </li>
         );
-
-        const categories = this.categories.map((category, i) =>
-            <option key={i} value={i+1}>{category}</option>
-        );
+        i = 0;
+        const categories = getCategoryOptions()
         return (
             <form onSubmit={this.handleSubmit} >
 

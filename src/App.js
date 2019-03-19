@@ -7,8 +7,9 @@ import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-// import { firebase } from './firebase/firebase';
+import database from './firebase/firebase';
 import firebase from 'firebase/app'
+
 import LoadingPage from './components/LoadingPage';
 import './App.css';
 import LoginForm from './LoginForm';
@@ -21,23 +22,40 @@ import LoginForm from './LoginForm';
 
 
 const store = configureStore();
-const jsx = (
+const App = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 );
+
+const renderLoading = () => {
+  ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+}
+
 let hasRendered = false;
 const renderApp = () => {
   if (!hasRendered) {
-    ReactDOM.render(jsx, document.getElementById('app'));
+    ReactDOM.render(App, document.getElementById('app'));
     hasRendered = true;
   }
 };
 
-ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+renderLoading()
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    const fbUser = {
+      id: user.uid,
+      metadata: {
+        creation_time: user.metadata.creationTime,
+        last_signin_time: user.metadata.lastSignInTime
+      },
+      display_name: user.displayName,
+      photo_url: user.photoURL,
+      provider_id: user.providerId,
+      email: user.email
+    }
+    database.ref('users').child(fbUser.id).set(fbUser);
     store.dispatch(login(user.uid));
     renderApp();
     if (history.location.pathname === '/') {
@@ -49,3 +67,6 @@ firebase.auth().onAuthStateChanged((user) => {
     history.push('/');
   }
 });
+
+
+export { renderApp, renderLoading, App as default }
