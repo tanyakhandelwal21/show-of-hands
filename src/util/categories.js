@@ -1,18 +1,18 @@
-import React from 'react';
+iimport React from 'react';
 
 const CATEGORIES = [
-        'ENTERTAINMENT',
-        'FOOD',
-        'LIFESTYLE',
-        'MISCELLANEOUS',
-        'SURVEY',
-        'TECHNOLOGY'
+	'ENTERTAINMENT',
+	'FOOD',
+	'LIFESTYLE',
+	'MISCELLANEOUS',
+	'SURVEY',
+	'TECHNOLOGY'
 ];
 
-export const getCategoryOption = () => {
-        return CATEGORIES.map((category, i) =>
+export const getCategoryOptions = () => {
+	return CATEGORIES.map((category, i) =>
         <option key={i} value={i}>{category}</option>
     );
- }
+}
 
- export default CATEGORIES;
+export default CATEGORIES;
