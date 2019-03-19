@@ -8,7 +8,6 @@ import firebase from 'firebase/app'
 
 /*
 const db = firebase.firestore();
-
 db.collection("cities").doc("LA").set({
     name: "Los Angeles",
     state: "CA",
@@ -22,19 +21,26 @@ db.collection("cities").doc("LA").set({
 });
 */
 
-export const PollList = (props) => (
-  <div>
-    {
-      (!props.polls || props.polls.length === 0) ? (
-        <p>No polls</p>
-      ) : (
-          props.polls.map((poll, i) => {
-            return <PollListItem key={i} data={poll} />;
-          })
-        )
+class PollList extends React.Component {
+
+  render () {
+
+    const props = this.props;
+
+    if (!props.polls || props.polls.length === 0) {
+      return <p>No polls</p>;
     }
-  </div>
-);
+
+    const pollItems = props.polls.map((poll) => {
+      return <PollListItem key={poll.id} data={poll} />;
+    })
+
+    return <div>
+
+      {pollItems}
+    </div>
+  }
+}
 
 const mapStateToProps = (state) => {
   const polls = selectPolls(state.polls, state.filters)
