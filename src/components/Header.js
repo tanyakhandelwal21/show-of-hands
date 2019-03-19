@@ -9,10 +9,11 @@ export const Header = ({ startLogout, addPoll }) => (
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
-          <h2 className="header1">Show Of Hands</h2>
+          <Text h2 className="logo--header">Show Of Hands</Text>
         </Link>
+        
         <button onClick={function(e){
-          e.onClick=window.location.href='/dashboard/polls'
+          e.onClick=window.location.href='/dashboard'
         }}>
           Create a Poll
         </button>

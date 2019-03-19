@@ -6,7 +6,7 @@ import './WelcomePage.css'
 const WelcomePage = (props) => (
 	<div className="main-page-links">
 		<a href="/dashboard/polls/">
-	        <h1>View Poll</h1>
+	        <h1 className="main-page-links">View Poll</h1>
 	    </a>   
 	    <a href="/dashboard/add-poll/">
 	    	<h1>Add Poll</h1>

@@ -457,9 +457,11 @@ button:disabled {
   background: #888; }
 
 .header {
+  color: #061938;
   background: #fff4db; }
 
 .header__content {
+  color: #061938;
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -474,6 +476,7 @@ button:disabled {
 }
 
 .content-container {
+  color: #061938;
   margin: 0 auto;
   padding: 0 1.6rem;
   max-width: 80rem; }
@@ -1433,7 +1436,11 @@ button:disabled {
   color: white;
 }
 
-.header1 {
+.main-page-links:visited {
+    color: white;
+}
+
+.logo--header {
   color: aqua;
 }
 
@@ -1441,7 +1448,7 @@ h2 {
   color: aqua;
 }
 
-h1 {
+/*h1 {
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: white;
   font-size: 2em;
@@ -1458,6 +1465,13 @@ h1:active {
 h1:visited {
   text-decoration: underline;
   text-decoration-color: #061938;
+}*/
+
+h1 {
+  color: aqua;
+}
+h1:visited {
+  color: aqua;
 }
 
 
