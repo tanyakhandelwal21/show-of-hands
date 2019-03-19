@@ -58,11 +58,6 @@ export const startGetPoll = (pollData = {}) => {
       const poll = ref.val()
       poll.id = ref.key
       poll.editable = (poll.author === getState().auth.uid)
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> anvi2
         if (pollData.edit && !poll.editable || isExpired(poll)) {
         window.location = "/dashboard/polls"
         return;
