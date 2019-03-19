@@ -12,7 +12,7 @@ export const listAllPolls = (pollData = {}) => {
       const pollsArray = Object.keys(polls).map(id => {
         polls[id].id = id
         return polls[id]
-      }).filter(c => !isExpired(c))
+      })
       dispatch(listPolls(pollsArray))
     });
   };
@@ -22,12 +22,12 @@ export const startAddPoll = (pollData = {}) => {
     return (dispatch, getState) => {
         const {
             title = '',
-                description = '',
-                category = 0,
-                choices = [],
-                start_date = new Date(),
-                end_date = new Date(),
-                public_results = false
+            description = '',
+            category = 0,
+            choices = [],
+            start_date = new Date(),
+            end_date = new Date(),
+            public_results = false
         } = pollData;
 
         const poll = {
@@ -39,6 +39,9 @@ export const startAddPoll = (pollData = {}) => {
             end_date,
             public_results
         };
+
+        poll.start_date = new Date(poll.start_date).getTime()
+        poll.end_date = new Date(poll.end_date).getTime()
         poll.author = getState().auth.uid
 
         database.ref('polls').push(poll).then((ref) => {
@@ -55,7 +58,11 @@ export const startGetPoll = (pollData = {}) => {
       const poll = ref.val()
       poll.id = ref.key
       poll.editable = (poll.author === getState().auth.uid)
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> anvi2
         if (pollData.edit && !poll.editable || isExpired(poll)) {
         window.location = "/dashboard/polls"
         return;

@@ -4,14 +4,8 @@ export const setTextFilter = (text = '') => ({
   text
 });
 
-// SORT_BY_DATE
-export const sortByDate = () => ({
-  type: 'SORT_BY_DATE'
-});
-
-// SORT_BY_AMOUNT
-export const sortByNumberOfOptions = () => ({
-  type: 'SORT_BY_NUMBEROFOPTIONS'
+export const triggerSort = type => ({
+  type
 });
 
 // SET_START_DATE
@@ -24,4 +18,14 @@ export const setStartDate = (startDate) => ({
 export const setEndDate = (endDate) => ({
   type: 'SET_END_DATE',
   endDate
+});
+
+export const setCategoryFilter = (category = '') => ({
+  type: 'SET_CATEGORY_FILTER',
+  category
+});
+
+export const setStatus = status => ({
+  type: 'POLL_STATUS',
+  status
 });
