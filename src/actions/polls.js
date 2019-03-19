@@ -39,6 +39,9 @@ export const startAddPoll = (pollData = {}) => {
             end_date,
             public_results
         };
+        //filter by date and time
+        poll.start_date = new Date(poll.start_date).getTime()
+	      poll.end_date = new Date(poll.end_date).getTime()
         poll.author = getState().auth.uid
 
         database.ref('polls').push(poll).then((ref) => {
