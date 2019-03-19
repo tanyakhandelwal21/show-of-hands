@@ -12,7 +12,7 @@ export const listAllPolls = (pollData = {}) => {
       const pollsArray = Object.keys(polls).map(id => {
         polls[id].id = id
         return polls[id]
-      }).filter(c => !isExpired(c))
+      })
       dispatch(listPolls(pollsArray))
     });
   };
