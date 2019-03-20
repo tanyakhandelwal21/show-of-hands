@@ -89,7 +89,7 @@ export default class PollForm extends React.Component {
             autoFocus
             value={this.state.description}
             onChange={this.onDescriptionChange}
-          />
+          /> 
           <input
             type="text"
             placeholder="numberOfOptions"
