@@ -34,11 +34,14 @@ class PollListItem extends React.Component {
         const choicesList = (this.poll.choices || []).map((choice) =>
             <li><ChoiceListItem text={choice.text} votes={choice.votes} isVisible={this.poll.public_results && Object(this.poll.responses)[this.props.uid]}/></li>
         );
-
+        let total_votes = 0;
+        for (let i = 0; i < this.poll.choices.length; i++) {
+            total_votes += this.poll.choices[i].votes;
+        }
         return (
             <div className="poll-card">
                 <Link to={`/dashboard/polls/${this.poll.id}`}>
-                    <h1>{this.poll.title}</h1>
+                    <h1>{this.poll.title} - {total_votes} vote{total_votes > 1 ? 's' : ' '}</h1>
                 </Link>
 
                 <h3>Category: {this.categories[this.poll.category]}</h3>
