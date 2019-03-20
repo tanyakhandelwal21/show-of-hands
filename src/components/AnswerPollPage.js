@@ -4,7 +4,7 @@ import PollForm from './CreateForm';
 import { startAnswerPoll, startGetPoll } from '../actions/polls';
 import getPoll from '../selectors/get-poll';
 
-export class EditPollPage extends React.Component {
+export class AnswerPollPage extends React.Component {
     constructor (props) {
         super(props)
         this.answerPoll = this.answerPoll.bind(this)
@@ -100,4 +100,4 @@ const mapDispatchToProps = (dispatch, route) => {
     }))
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditPollPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerPollPage);

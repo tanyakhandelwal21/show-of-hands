@@ -83,6 +83,7 @@ export default class PollForm extends React.Component {
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
           <input
+          className="text-input-box"
             type="text"
             placeholder="Description"
             autoFocus
