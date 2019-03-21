@@ -1,8 +1,6 @@
 body {
-    background-color:blue !important;
-    max-width: 10%;
+    background-color:#fffcfc !important;
     border-style: hidden;
-    margin: 10%;
 }
 
 .create-poll {

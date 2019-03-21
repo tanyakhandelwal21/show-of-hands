@@ -7,13 +7,22 @@ import { listAllPolls } from '../actions/polls';
 const WelcomePage = (props) => (
 	<div>
 		<div>
-			<a href="/dashboard/polls/">View Polls</a>
-			<a href="/dashboard/add-poll/">Add Poll</a>
+		<button onClick={function(e){
+          e.onClick=window.location.href='/dashboard/polls'
+        }}>
+          View Polls
+        </button>
+		<span>                  </span>
+        <button onClick={function(e){
+          e.onClick=window.location.href='/dashboard/add-poll'
+        }}>
+          Create a Poll
+        </button>
 		</div>
 		<div>
 			<h1>Trending Polls</h1>
 			<TrendingList />
-		</div>
+	</div>
 	</div>
 )
 

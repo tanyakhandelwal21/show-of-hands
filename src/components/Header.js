@@ -12,11 +12,7 @@ export const Header = ({ startLogout }) => (
           <h1 className="logo--header">Show Of Hands</h1>
         </Link>
         
-        <button onClick={function(e){
-          e.onClick=window.location.href='/dashboard'
-        }}>
-          Create a Poll
-        </button>
+        
         <button className="button--logout button button--link" onClick={startLogout}>Logout</button>
 
       </div>

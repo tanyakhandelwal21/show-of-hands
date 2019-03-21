@@ -20,8 +20,9 @@ html {
  * Remove the margin in all browsers (opinionated).
  */
 body {
-  margin: 0;
-  background-color: #fff7f7;
+  margin-left: 0%;
+  margin-right: 0%;
+  background-color: #000;
  }
 
 /**
@@ -88,11 +89,15 @@ pre {
  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
 a {
-  background-color: transparent;
+
+  background-color: aqua;
   color: #061938;
   /* 1 */
   -webkit-text-decoration-skip: objects;
   /* 2 */ }
+  a:visited {
+    color: pink;
+  }
 
 /**
  * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
@@ -477,6 +482,9 @@ button:disabled {
   font-weight: bolder;
 }
 
+.header__title h1 {
+  color: aqua;
+}
 .content-container {
   color: #061938;
   margin: 0 auto;
