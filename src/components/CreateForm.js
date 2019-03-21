@@ -135,7 +135,7 @@ class CreateForm extends React.Component {
     getDate(month_offset, date_offset) {
         let date = new Date();
         date.setMonth(date.getMonth() + month_offset);
-        date.setDate(date.getDate() + date_offset);
+        if (date_offset) date.setDate(date.getDate() + date_offset);
         return date.toISOString().substring(0,10);
     }
 
