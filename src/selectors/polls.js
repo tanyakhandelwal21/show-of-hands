@@ -15,8 +15,9 @@ export default (polls, o) => {
     const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
     const textMatch = poll.title.toLowerCase().includes(text.toLowerCase());
     const categoryMatch = category ? +poll.category === +category : true
-    const pollStatusMatch = pollStatus ? pollStatus === "ACTIVE" ? poll.end_date > new Date().getTime() : poll.end_date < new Date().getTime() : true
-    return startDateMatch && endDateMatch && textMatch && categoryMatch && pollStatusMatch;
+    const pollStatusMatch = pollStatus ? pollStatus === "INACTIVE" ? poll.end_date < new Date().getTime() : poll.end_date > new Date().getTime() : true
+    const isTrendingMatch = pollStatus === "TRENDING" ? getPollTrendingIndex(poll) > IS_TRENDING_POLL_MIN : true
+    return startDateMatch && endDateMatch && textMatch && categoryMatch && pollStatusMatch && isTrendingMatch;
   }).sort((a, b) => {
       const countRes = r => Object.keys(r.responses || {}).length
 
