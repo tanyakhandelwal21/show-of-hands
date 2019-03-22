@@ -8,6 +8,18 @@ export default (polls, o) => {
     return polls.polls;
   }
 
+  const IS_TRENDING_POLL_MIN = 2;
+  const getPollTrendingIndex = p => {
+    const timeDelta = (new Date().getTime() - (p.start_date || 0)) / (24 * 60 * 60 * 1000)
+    if (timeDelta > 5) {
+      return -1
+    }
+
+    const trendingIndex = Object.keys(p.responses || {}).length / timeDelta
+    console.log(trendingIndex)
+    return trendingIndex;
+  }
+
   const { category, text, sortBy, startDate, endDate, pollStatus } = o;
   return polls.polls.filter((poll) => {
     const createdAtMoment = moment(poll.start_date);
