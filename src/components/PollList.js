@@ -9,45 +9,43 @@ import firebase from 'firebase/app'
 /*
 const db = firebase.firestore();
 db.collection("cities").doc("LA").set({
-    name: "Los Angeles",
-    state: "CA",
-    country: "USA"
+	name: "Los Angeles",
+	state: "CA",
+	country: "USA"
 })
 .then(function() {
-    console.log("Document successfully written!");
+	console.log("Document successfully written!");
 })
 .catch(function(error) {
-    console.error("Error writing document: ", error);
+	console.error("Error writing document: ", error);
 });
 */
 
 
 class PollList extends React.Component {
 
-  render () {
+	render () {
 
-    const props = this.props;
+	const props = this.props;
 
-    if (!props.polls || props.polls.length === 0) {
-      return <p>No polls</p>;
-    }
+	if (!props.polls || props.polls.length === 0) {
+		return <p>No polls</p>;
+	}
 
-    const pollItems = props.polls.map((poll) => {
-      return <PollListItem uid={props.uid} key={poll.id} data={poll} />;
-    })
+	const pollItems = props.polls.map((poll) => {
+		return <PollListItem uid={props.uid} key={poll.id} data={poll} />;
+	});
 
-    return <div>
-      {pollItems}
-    </div>
-  }
+	return <div>{pollItems}</div>;
+	}
 }
 
 const mapStateToProps = (state) => {
-  const polls = selectPolls(state.polls, state.filters)
-  return {
-    polls,
-    uid: state.auth.uid
-  };
+	const polls = selectPolls(state.polls, state.filters);
+	return {
+	polls,
+	uid: state.auth.uid
+	};
 };
 
 export default connect(mapStateToProps)(PollList);

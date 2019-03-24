@@ -7,9 +7,9 @@ import { listAllPolls } from '../actions/polls';
 
 const DashboardPage = (props) => (
 	<div>
-		<PollsSummary />
-		<PollListFilters />
-		<PollList />
+	<PollsSummary />
+	<PollListFilters />
+	<PollList />
 	</div>
 )
 
