@@ -8,24 +8,24 @@ import { listAllPolls } from '../actions/polls';
 class DashboardPage extends React.Component {
 
 	constructor (props) {
-		super(props);
-		this.state = { filters: {} }
-		this.rerenderList = this.rerenderList.bind(this)
+	super(props);
+	this.state = { filters: {} }
+	this.rerenderList = this.rerenderList.bind(this)
 	}
 
 	rerenderList (filters) {
-		/*setState({
-			filters
-		})*/
-		//this.props.refresh()
+	/*setState({
+		filters
+	})*/
+	//this.props.refresh()
 	}
 
 	render () {
-		return <div>
-			<PollsSummary />
-			<PollListFilters onChange={this.rerenderList} />
-			<PollList filters={this.state.filters} />
-		</div>
+	return <div>
+		<PollsSummary />
+		<PollListFilters onChange={this.rerenderList} />
+		<PollList filters={this.state.filters} />
+	</div>
 	}
 }
 
@@ -33,7 +33,7 @@ class DashboardPage extends React.Component {
 const mapDispatchToProps = (dispatch) => {
 	dispatch(listAllPolls())
 	return {
-		refresh: () => dispatch(listAllPolls())
+	refresh: () => dispatch(listAllPolls())
 	}
 };
 
