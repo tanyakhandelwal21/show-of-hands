@@ -59,7 +59,7 @@ export const startGetPoll = (pollData = {}) => {
       poll.id = ref.key
       poll.editable = (poll.author === getState().auth.uid)
         if (pollData.edit && !poll.editable || isExpired(poll)) {
-        window.location = "/dashboard/polls"
+        window.location = "/polls"
         return;
       }
       dispatch(getPoll(poll));

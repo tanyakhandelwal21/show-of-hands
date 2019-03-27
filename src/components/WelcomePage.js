@@ -7,8 +7,8 @@ import { listAllPolls } from '../actions/polls';
 const WelcomePage = (props) => (
 	<div>
 	<div>
-		<a href="/dashboard/polls/">View Polls</a>
-		<a href="/dashboard/add-poll/">Add Poll</a>
+		<a href="/polls/">View Polls</a>
+		<a href="/add-poll/">Add Poll</a>
 	</div>
 	<div>
 		<h1>Trending Polls</h1>

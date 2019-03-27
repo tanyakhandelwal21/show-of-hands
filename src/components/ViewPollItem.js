@@ -16,13 +16,13 @@ export const ViewPollItem = ({ poll }) => {
 		<div>
 			<PollListItem data={poll} />;
 			{
-				poll && poll.editable ? <Link to={`/dashboard/polls/${id}/edit`}>
+				poll && poll.editable ? <Link to={`/polls/${id}/edit`}>
 					<button>
 						Edit
 					</button>
 				</Link> : null
 			}
-			<Link to={`/dashboard/polls/${id}/answer`}>
+			<Link to={`/polls/${id}/answer`}>
 				<button>
 					Answer
 				</button>

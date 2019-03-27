@@ -8,10 +8,10 @@ export const Header = ({ startLogout }) => (
 	<header className="header">
 	<div className="content-container">
 		<div className="header__content">
-		<Link className="header__title" to="/dashboard">
+		<Link className="header__title" to="/welcome">
 			<h1>Show Of Hands</h1>
 		</Link>
-		<button onClick={e => e.onClick=window.location.href='/dashboard/add-poll'}>
+		<button onClick={e => e.onClick=window.location.href='/add-poll'}>
 			Create a Poll
 		</button>
 		<button className="button--logout button button--link" onClick={startLogout}>Logout</button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-import DashboardPage from '../components/DashboardPage';
+import ViewPage from '../components/ViewPage';
 import AddPollPage from '../components/AddPollPage';
 import AnswerPollPage from '../components/AnswerPollPage';
 import CreatePage from '../components/CreatePage';
@@ -21,13 +21,13 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
-        <PrivateRoute path="/dashboard/" component={WelcomePage} exact={true} />
-        <PrivateRoute path="/dashboard/polls" component={DashboardPage} exact={true} />
-        <PrivateRoute path="/dashboard/add-poll" component={CreatePage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/edit" component={EditPollPage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/:id" component={ViewPollPage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/:id/edit" component={EditPollPage} exact={true} />
-        <PrivateRoute path="/dashboard/polls/:id/answer" component={AnswerPollPage} exact={true} />
+        <PrivateRoute path="/welcome" component={WelcomePage} exact={true} />
+        <PrivateRoute path="/polls" component={ViewPage} exact={true} />
+        <PrivateRoute path="/add-poll" component={CreatePage} exact={true} />
+        <PrivateRoute path="/polls/edit" component={EditPollPage} exact={true} />
+        <PrivateRoute path="/polls/:id" component={ViewPollPage} exact={true} />
+        <PrivateRoute path="/polls/:id/edit" component={EditPollPage} exact={true} />
+        <PrivateRoute path="/polls/:id/answer" component={AnswerPollPage} exact={true} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

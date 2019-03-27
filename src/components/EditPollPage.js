@@ -17,7 +17,7 @@ export class EditPollPage extends React.Component {
 	}
 	onRemove (poll) {
 	startRemovePoll(this.props.poll.id)(() => {
-		location = "/dashboard/";
+		location = "/welcome";
 	})
 	}
 	render() {

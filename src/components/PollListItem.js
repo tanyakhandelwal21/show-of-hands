@@ -38,7 +38,7 @@ class PollListItem extends React.Component {
 		}
 		return (
 			<div className="poll-card">
-				<Link to={`/dashboard/polls/${this.poll.id}`}>
+				<Link to={`/polls/${this.poll.id}`}>
 					<h1>{this.poll.title} - {total_votes} vote{total_votes > 1 ? 's' : ' '}</h1>
 				</Link>
 
