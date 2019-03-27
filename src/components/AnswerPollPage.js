@@ -45,7 +45,7 @@ export class AnswerPollPage extends React.Component {
 						<p>{this.props.poll.description}</p>
 						<div className="answers">
 							<p><strong>You have answered the poll.</strong></p>
-							<a href={`/dashboard/polls/${this.props.poll.id}`}>
+							<a href={`/polls/${this.props.poll.id}`}>
 								View the poll
 							</a>
 						</div>

@@ -13,7 +13,7 @@ exports[`should render Header correctly 1`] = `
       <Link
         className="header__title"
         replace={false}
-        to="/dashboard"
+        to="/welcome"
       >
         <h1
           className="logo--header"

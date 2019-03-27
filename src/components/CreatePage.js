@@ -9,7 +9,7 @@ class CreatePage extends React.Component {
 	}
 	createPoll(poll) {
 		this.props.startAddPoll(poll);
-		this.props.history.push('/');
+		this.props.history.push('/welcome');
 	}
 	render() {
 		return (

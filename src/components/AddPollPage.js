@@ -10,7 +10,7 @@ export class AddPollPage extends React.Component {
 	}
 	onSubmit (poll) {
 	this.props.startAddPoll(poll);
-	this.props.history.push('/');
+	this.props.history.push('/welcome');
 	}
 	render() {
 	return (

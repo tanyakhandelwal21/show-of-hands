@@ -58,13 +58,13 @@ firebase.auth().onAuthStateChanged((user) => {
     database.ref('users').child(fbUser.id).set(fbUser);
     store.dispatch(login(user.uid));
     renderApp();
-    if (history.location.pathname === '/') {
-      history.push('/dashboard');
+    if (history.location.pathname === '/welcome') {
+      history.push('/welcome');
     }
   } else {
     store.dispatch(logout());
     renderApp();
-    history.push('/');
+    history.push('/welcome');
   }
 });
 
