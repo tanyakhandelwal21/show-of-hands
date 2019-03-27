@@ -14,7 +14,7 @@ db.collection("cities").doc("LA").set({
 	country: "USA"
 })
 .then(function() {
-	console.log("Document successfully written!");
+	// console.log("Document successfully written!");
 })
 .catch(function(error) {
 	console.error("Error writing document: ", error);

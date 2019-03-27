@@ -91,6 +91,8 @@ export class AnswerPollPage extends React.Component {
 
 const mapStateToProps = (state) => {
 	const poll = getPoll(state.poll);
+	// console.log("State:");
+	// console.log(state);
 	const uid = state.auth.uid;
 	return { poll, uid };
 };

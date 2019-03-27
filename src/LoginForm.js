@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
       // The signed-in user info.
       var user = result.user;
       // ...
-      console.log(token, user);
+      // console.log(token, user);
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
       // ...
-      console.log(errorCode, errorMessage, email, credential);
+      // console.log(errorCode, errorMessage, email, credential);
     });
   }
 

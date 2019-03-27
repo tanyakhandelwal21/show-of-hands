@@ -7,7 +7,7 @@ import CreateForm from './CreateForm';
 
 import firebase from 'firebase/app';
 import config from './firebase.config.js';
-console.log('the config', config)
+// console.log('the config', config)
 import 'firebase/firestore'
 firebase.initializeApp(config);
 

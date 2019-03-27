@@ -6,6 +6,7 @@ import AddPollPage from '../components/AddPollPage';
 import AnswerPollPage from '../components/AnswerPollPage';
 import CreatePage from '../components/CreatePage';
 import EditPollPage from '../components/EditPollPage';
+import DashboardPage from '../components/DashboardPage';
 import NotFoundPage from '../components/NotFoundPage';
 import WelcomePage from '../components/WelcomePage';
 import LoginPage from '../components/LoginPage';
@@ -22,6 +23,7 @@ const AppRouter = () => (
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
         <PrivateRoute path="/welcome" component={WelcomePage} exact={true} />
+        <PrivateRoute path="/dashboard" component={DashboardPage} exact={true} />
         <PrivateRoute path="/polls" component={ViewPage} exact={true} />
         <PrivateRoute path="/add-poll" component={CreatePage} exact={true} />
         <PrivateRoute path="/polls/edit" component={EditPollPage} exact={true} />

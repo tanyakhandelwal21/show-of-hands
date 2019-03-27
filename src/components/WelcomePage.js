@@ -9,6 +9,7 @@ const WelcomePage = (props) => (
 	<div>
 		<a href="/polls/">View Polls</a>
 		<a href="/add-poll/">Add Poll</a>
+		<a href="/dashboard/">User Dashboard</a>
 	</div>
 	<div>
 		<h1>Trending Polls</h1>

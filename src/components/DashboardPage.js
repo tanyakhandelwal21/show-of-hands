@@ -1,41 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PollList from './PollList';
-import PollListFilters from './PollListFilters';
-import PollsSummary from './PollsSummary';
-import { listAllPolls } from '../actions/polls';
-import './DashboardPage.css'
+import * as firebase from 'firebase';
+import { startAnswerPoll, startGetPoll } from '../actions/polls';
+import getPoll from '../selectors/get-poll';
+
+let UID;
+let user = firebase.auth();
 
 class DashboardPage extends React.Component {
+    render() {
+        user = firebase.auth().currentUser;
+        if (user) console.log(user); else console.log("No user found.");
+        return (
+            <div>
 
-	constructor (props) {
-	super(props);
-	this.state = { filters: {} }
-	this.rerenderList = this.rerenderList.bind(this)
-	}
-
-	rerenderList (filters) {
-	/*setState({
-		filters
-	})*/
-	//this.props.refresh()
-	}
-
-	render () {
-	return <div>
-		<PollsSummary />
-		<PollListFilters onChange={this.rerenderList} />
-		<PollList filters={this.state.filters} />
-	</div>
-	}
+                <h1>
+                    <img
+                    src={user.photoURL}
+                    alt={user.displayName + "'s profile picture"}
+                    width="70"
+                    height="70"/>
+                    {user.displayName}'s Dashboard
+                </h1>
+                <p>Email:           {user.email}</p>
+                <p>User ID:         {user.uid}</p>
+                <p>Phone number:    {user.phoneNumber ? user.phoneNumber : "None provided"}</p>
+            </div>
+        );
+    }
 }
 
-
-const mapDispatchToProps = (dispatch) => {
-	dispatch(listAllPolls())
-	return {
-	refresh: () => dispatch(listAllPolls())
-	}
+const mapStateToProps = (state) => {
+	const poll = getPoll(state.poll);
+	// console.log("State:");
+	// console.log(state);
+	const uid = state.auth.uid;
+    UID = uid;
+	return { poll, uid };
 };
 
-export default connect(undefined, mapDispatchToProps)(DashboardPage);
+export default connect(mapStateToProps)(DashboardPage);
