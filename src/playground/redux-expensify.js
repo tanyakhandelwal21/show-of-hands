@@ -162,7 +162,7 @@ const store = createStore(
 store.subscribe(() => {
   const state = store.getState();
   const visiblePolls = getVisiblePolls(state.polls, state.filters);
-  console.log(visiblePolls);
+  // console.log(visiblePolls);
 });
 
 const pollOne = store.dispatch(addPoll({ description: 'Rent', amount: 100, createdAt: -21000 }));

@@ -4,7 +4,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import CATEGORIES from '../util/categories'
 function ChoiceListItem(props) {
-	console.log(props.text);
+	// console.log(props.text);
 	const span = props.isVisible ? <span> - {props.votes || 0} votes</span> : null;
 	return <span>{props.text} {span}</span>;
 }

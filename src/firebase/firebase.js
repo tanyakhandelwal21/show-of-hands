@@ -18,9 +18,9 @@ export { firebase, googleAuthProvider, database as default };
 // 		country: 'United States'
 // 	}
 // }).then(() => {
-// 	console.log('Data is saved');
+// 	// console.log('Data is saved');
 // }).catch((e) => {
-// 	console.log('This failed', e);
+// 	// console.log('This failed', e);
 // });
 
 // database.ref().set('This is my data.');
@@ -33,9 +33,9 @@ export { firebase, googleAuthProvider, database as default };
 // 	height: 73,
 // 	weight: 150
 // }).then(() => {
-// 	console.log('Second set call worked.');
+// 	// console.log('Second set call worked.');
 // }).catch((e) => {
-// 	console.log('Things didnt for the second error', e);
+// 	// console.log('Things didnt for the second error', e);
 // });
 // // attributes
 // // height
@@ -46,9 +46,9 @@ export { firebase, googleAuthProvider, database as default };
 // database.ref('isCSMAJOR')
 // 	.remove()
 // 	.then(() => {
-// 		console.log('Data was removed');
+// 		// console.log('Data was removed');
 // 	}).catch((e) => {
-// 		console.log('Did not remove data', e);
+// 		// console.log('Did not remove data', e);
 // 	});
 
 

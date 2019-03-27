@@ -114,10 +114,10 @@ class CreateForm extends React.Component {
 				break;
 			}
 		}
-		console.log("Remove " + text + ": index " + index);
-		console.log(tc);
+		// console.log("Remove " + text + ": index " + index);
+		// console.log(tc);
 		tc.splice(index, 1);
-		console.log(tc);
+		// console.log(tc);
 		let c = this.state.choices.slice();
 		c.splice(index, 1);
 		this.setState({

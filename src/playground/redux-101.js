@@ -51,7 +51,7 @@ const countReducer = (state = { count: 0 }, action) => {
 const store = createStore(countReducer);
 
 const unsubscribe = store.subscribe(() => {
-  console.log(store.getState());
+  // console.log(store.getState());
 });
 
 store.dispatch(incrementCount({ incrementBy: 5 }))

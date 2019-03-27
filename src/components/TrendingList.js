@@ -31,7 +31,7 @@ class TrendingList extends React.Component {
 
 			polls[i].hotness = hotness;
 
-			console.log(polls[i].title, hotness);
+			// console.log(polls[i].title, hotness);
 		}
 
 		// Sort polls by their hotness factors (in place with their titles)
