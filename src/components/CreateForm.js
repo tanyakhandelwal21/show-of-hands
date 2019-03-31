@@ -1,6 +1,6 @@
 import React from 'react';
-// import './CreateForm.css';
 import CATEGORIES, { getCategoryOptions } from '../util/categories.js';
+
 // Component for one choice in the poll
 function Choice(props) {
     return (
@@ -17,8 +17,7 @@ class CreateForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.categories=CATEGORIES;
-
+        this.categories = CATEGORIES;
 
         this.state = {
             title: '',
@@ -135,14 +134,14 @@ class CreateForm extends React.Component {
     }
 
     // Get current date in YYYY-MM-DD format with an offset of months
-    getDate(offset) {
+    getDate(month_offset, date_offset) {
         let date = new Date();
-        date.setMonth(date.getMonth() + offset);
+        date.setMonth(date.getMonth() + month_offset);
+        if (date_offset) date.setDate(date.getDate() + date_offset);
         return date.toISOString().substring(0,10);
     }
 
     // Send form data to backend API
-    // TODO: Add user_id
     handleSubmit(e) {
         e.preventDefault()
         this.props.onSubmit({
@@ -150,7 +149,6 @@ class CreateForm extends React.Component {
             description: this.state.description,
             category: this.state.category,
             choices: this.state.choices,
-            start_date: new Date(),
             end_date: this.state.end_date,
             public_results: this.state.public_results,
             responders: [],
@@ -169,9 +167,7 @@ class CreateForm extends React.Component {
             </li>
         );
         i = 0;
-      
         const categories = getCategoryOptions()
-	
         return (
             <form onSubmit={this.handleSubmit} >
 
@@ -220,8 +216,8 @@ class CreateForm extends React.Component {
                 <input
                     type="date"
                     value={this.state.end_date}
-                    min={this.getDate(0)}
-                    max={this.getDate(1)}
+                    min={this.getDate(0, 1)}
+                    max={this.getDate(1, 0)}
                     onChange={e => this.updateValue(e, 'end_date')}/>
                 <br/>
 

@@ -1,5 +1,6 @@
 import selectPolls from '../selectors/polls';
 
+// Polls Reducer
 const pollsReducerDefaultState = { polls: [] }
 export default (state = pollsReducerDefaultState, action) => {
   switch (action.type) {
@@ -22,9 +23,9 @@ export default (state = pollsReducerDefaultState, action) => {
         };
       });
     case 'LIST_POLLS':
-    return {
-      polls: action.polls || state.polls
-    }
+      return {
+        polls: action.polls || state.polls
+      }
     case 'GET_POLL':
       return action.poll;
     default:

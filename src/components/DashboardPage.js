@@ -4,9 +4,10 @@ import PollList from './PollList';
 import PollListFilters from './PollListFilters';
 import PollsSummary from './PollsSummary';
 import { listAllPolls } from '../actions/polls';
+import './DashboardPage.css'
 
 class DashboardPage extends React.Component {
-	
+
 	constructor (props) {
 		super(props);
 		this.state = { filters: {} }
@@ -29,14 +30,12 @@ class DashboardPage extends React.Component {
 	}
 }
 
- 
 
 const mapDispatchToProps = (dispatch) => {
-	//return dispatch(listAllPolls())
 	dispatch(listAllPolls())
-		return {
-			refresh: () => dispatch(listAllPolls())
-		}
+	return {
+		refresh: () => dispatch(listAllPolls())
+	}
 };
 
 export default connect(undefined, mapDispatchToProps)(DashboardPage);

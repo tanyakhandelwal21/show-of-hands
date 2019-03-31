@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 import config from './firebase.config.js';
-// import firebase from 'firebase/app'
-import 'firebase/firestore'
+ //import firebase from 'firebase/app'
+//import 'firebase/firestore'
 
 firebase.initializeApp(config);
 
@@ -11,7 +11,7 @@ const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 export { firebase, googleAuthProvider, database as default };
 
 // database.ref().set({
-// 	name: 'Jia Lin Cheoh',
+// 	name: 'Jia Lin Cheoh',q
 // 	age: 24,
 // 	location: {
 // 		city: 'Singapore',

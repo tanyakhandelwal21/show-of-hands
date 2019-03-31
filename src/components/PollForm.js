@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
+import './PollForm.css';
 
 export default class PollForm extends React.Component {
   constructor(props) {
@@ -82,12 +83,13 @@ export default class PollForm extends React.Component {
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.onSubmit}>
           <input
+          className="text-input-box"
             type="text"
             placeholder="Description"
             autoFocus
             value={this.state.description}
             onChange={this.onDescriptionChange}
-          />
+          /> 
           <input
             type="text"
             placeholder="numberOfOptions"

@@ -1,0 +1,40 @@
+
+.view-polls {
+    color: white;
+}
+
+h1 {
+    margin: 50%;
+    font-family: Georgia, serif;
+    color: #13315b;
+    text-decoration: #fffcfc;
+    text-decoration-line: #fffcfc;
+}
+h1:visited {
+    color: #13315b;
+    text-decoration: #fffcfc;
+    text-decoration-line: #fffcfc;
+}
+
+.header__title h1 {
+    font-variant: small-caps;
+    font-family: Georgia, serif;
+    color: white;
+}
+
+h3 {
+    font-family: Georgia, serif;
+    font-variant: small-caps;
+}
+
+p {
+    font-family: Georgia, serif;
+}
+
+label {
+    font-family: Georgia, serif;
+}
+
+span {
+    font-family: Georgia, serif;
+}

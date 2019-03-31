@@ -20,7 +20,10 @@ html {
  * Remove the margin in all browsers (opinionated).
  */
 body {
-  margin: 0; }
+  margin-left: 0%;
+  margin-right: 0%;
+  background-color: #000;
+ }
 
 /**
  * Add the correct display in IE 9-.
@@ -37,9 +40,7 @@ section {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0; }
+
 
 /* Grouping content
    ========================================================================== */
@@ -88,10 +89,15 @@ pre {
  * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
  */
 a {
-  background-color: transparent;
+
+  background-color: aqua;
+  color: #061938;
   /* 1 */
   -webkit-text-decoration-skip: objects;
   /* 2 */ }
+  a:visited {
+    color: pink;
+  }
 
 /**
  * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
@@ -238,6 +244,7 @@ select {
  *    controls in Android 4.
  * 2. Correct the inability to style clickable types in iOS and Safari.
  */
+
 button,
 html [type="button"],
 [type="reset"],
@@ -407,7 +414,14 @@ button:disabled {
   cursor: default; }
 
 .is-active {
-  font-weight: bold; }
+  color: #061528;
+  font-weight: bold; 
+}
+
+.is-active:visited
+{
+  color: #061528;
+}
 
 .box-layout {
   align-items: center;
@@ -441,27 +455,38 @@ button:disabled {
   text-decoration: none; }
 
 .button--link {
-  background: none; }
+  background: none;
+  color: #f2fcff;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+ }
 
 .button--secondary {
   background: #888; }
 
 .header {
-  background: #364051; }
+  color: #062438;
+  background: #061528; }
 
 .header__content {
+  color: #061938;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 1.2rem 0; }
+  padding: 0.5rem 0; }
 
 .header__title {
-  color: white;
-  text-decoration: none; }
-  .header__title h1 {
-    margin: 0; }
+  color: #061938;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-variant: small-caps;
+  text-decoration: none;
+  font-weight: bolder;
+}
 
+.header__title h1 {
+  color: aqua;
+}
 .content-container {
+  color: #061938;
   margin: 0 auto;
   padding: 0 1.6rem;
   max-width: 80rem; }
@@ -1412,5 +1437,92 @@ button:disabled {
 
 .loginContainer {
   margin: 10px; }
+
+.view-poll-link {
+  color: white;
+}
+
+.main-page-links {
+  text-align: center;
+  color: white;
+}
+
+.main-page-links:visited {
+    color: white;
+}
+
+.logo--header {
+  color: aqua;
+}
+
+h2 {
+  color: aqua;
+}
+/*h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+  font-size: 2em;
+  margin: 0.67em 0; 
+  text-decoration: underline;
+  text-decoration-color: #061938;
+}
+
+h1:active {
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: #061938;
+}
+h1:visited {
+  text-decoration: underline;
+  text-decoration-color: #061938;
+}*/
+
+
+h1 {
+  font-variant: small-caps;
+  text-align: center;
+  display: inline;
+  margin-left: 5%;
+  color: #021328;
+  text-decoration: 'none' !important;
+  text-underline-position: unset;
+  text-decoration-color: #f4fbff;
+  font-family: Georgia, serif;
+}
+h1:visited {
+  color: #021328;
+  text-decoration: 'none' !important;
+  text-underline-position: unset;
+  text-decoration-color: #f4fbff;
+}
+
+h1:hover {
+  color: #133e72;
+}
+
+.logo--header {
+  color: #061938 !important;
+}
+
+.header__title h1 {
+font-size: 40px;
+  margin: 0%;
+  color: #f2fcff !important;
+}
+
+.header__content {
+  color: #061938 !important;
+}
+
+.content-container {
+  color: #061938 !important;
+}
+.header {
+  color: #061938 !important;
+}
+
+input [type="text"] {
+  background-color: #00a699;
+}
 
 /*# sourceMappingURL=styles.css.map*/

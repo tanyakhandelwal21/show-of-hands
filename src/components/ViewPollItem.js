@@ -27,6 +27,7 @@ export const ViewPollItem = ({ poll }) => {
                     Answer
                 </button>
             </Link>
+            <button> Like </button>
         </div>
     );
 };

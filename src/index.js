@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import CreateForm from './CreateForm';
 
 import firebase from 'firebase/app';
 import config from './firebase.config.js';

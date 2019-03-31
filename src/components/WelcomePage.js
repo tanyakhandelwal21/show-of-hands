@@ -1,18 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import TrendingList from './TrendingList';
+import { listAllPolls } from '../actions/polls';
 
 const WelcomePage = (props) => (
 	<div>
-		<a href="/dashboard/polls/">
-	        <h1>View Polls</h1>
-	    </a>   
-	    <a href="/dashboard/add-poll/">
-	        <h1>Add Poll</h1>
-	    </a>    
+		<div>
+		<button onClick={function(e){
+          e.onClick=window.location.href='/dashboard/polls'
+        }}>
+          View Polls
+        </button>
+		<span>                  </span>
+        <button onClick={function(e){
+          e.onClick=window.location.href='/dashboard/add-poll'
+        }}>
+          Create a Poll
+        </button>
+		</div>
+		<div>
+			<h1>Trending Polls</h1>
+			<TrendingList />
+	</div>
 	</div>
 )
- 
 
 
-export default connect()(WelcomePage);
+const mapDispatchToProps = (dispatch) => {
+	dispatch(listAllPolls())
+	return {
+		refresh: () => dispatch(listAllPolls())
+	}
+};
+
+export default connect(undefined, mapDispatchToProps)(WelcomePage);

@@ -14,8 +14,7 @@ export default () => {
       auth: authReducer,
       polls: pollsReducer,
       poll: pollItemReducer,
-      poll: pollItemReducer,
-	      filters: filtersReducer
+      filters: filtersReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

@@ -9,12 +9,9 @@ export const Header = ({ startLogout }) => (
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
-          <h1>Show Of Hands</h1>
+          <h1 className="logo--header">Show Of Hands</h1>
         </Link>
-        <button onClick={function(e){
-          e.onClick= window.location.href="/dashboard/polls/add"
-        }}> Create A Poll
-        </button>
+        
         
         <button className="button--logout button button--link" onClick={startLogout}>Logout</button>
 
@@ -29,3 +26,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export default connect(undefined, mapDispatchToProps)(Header);
+
