@@ -2,7 +2,11 @@
 .view-polls {
     color: white;
 }
-
+#poll-card {
+    box-sizing: content-box;  
+    box-pack: inherit;  
+  border: 10px solid blue;
+}
 h1 {
     position: relative;
     border-style: double;

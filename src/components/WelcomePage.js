@@ -7,7 +7,7 @@ import { listAllPolls } from '../actions/polls';
 const WelcomePage = (props) => (
 	<div>
 	<div>
-		<h1>Trending Polls</h1>
+		<h1 className="trending-polls">Trending Polls</h1>
 		<TrendingList />
 	</div>
 	</div>
