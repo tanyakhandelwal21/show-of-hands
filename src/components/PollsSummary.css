@@ -4,6 +4,10 @@
 }
 
 h1 {
+    position: relative;
+    border-style: double;
+    border-color: #fffcfc;
+    border-left-width: 0.5em;
     margin: 50%;
     font-family: Georgia, serif;
     color: #13315b;
@@ -17,6 +21,9 @@ h1:visited {
 }
 
 .header__title h1 {
+    margin-left: 0%;
+    text-align: left;
+    border-style: none !important; 
     font-variant: small-caps;
     font-family: Georgia, serif;
     color: white;
@@ -25,6 +32,9 @@ h1:visited {
 h3 {
     font-family: Georgia, serif;
     font-variant: small-caps;
+    border-style: dotted;
+    border-color: #fffcfc;
+    border-left-width: 0.5em;
 }
 
 p {
