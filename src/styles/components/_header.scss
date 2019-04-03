@@ -2,6 +2,10 @@
   background: #2b2d30;
 }
 
+body 
+{
+  background-color: #f7f7f7 !important;
+}
 .header__content {
   align-items: center;
   display: flex;
@@ -19,9 +23,21 @@
   }
 }
 h1 {
-  color: #2b2d30;
+  color:#2b2d30;
+}
+
+h1:link
+{
+  text-decoration: none;
+}
+
+.poll-title h1{
+  text-align: left;
+  margin-left: 10%;
+  font-variant: small-caps;
 }
 .trending-polls {
+  border: none;
   font-variant: small-caps;
   text-align: center;
 }

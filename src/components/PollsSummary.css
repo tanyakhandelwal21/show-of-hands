@@ -3,10 +3,20 @@
     color: white;
 }
 #poll-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
     box-sizing: content-box;  
     box-pack: inherit;  
-  border: 10px solid blue;
+    border: 1px;
+    box-sizing: content-box;
+    background-color: white !important;
+    margin: 1%
 }
+
+#poll-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
 h1 {
     position: relative;
     border-style: double;
@@ -25,7 +35,6 @@ h1:visited {
 }
 
 .header__title h1 {
-    margin-left: 0%;
     text-align: left;
     border-style: none !important; 
     font-variant: small-caps;
